@@ -1,20 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlatformOneTouch : MonoBehaviour
 {
+    [SerializeField] private short chanceToBreak = 40;
+    [SerializeField] private float tiemToBreak = .5f;
     short rnd;
     private void Start()
     {
-        rnd = (short)Random.Range(0, 10);
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        rnd = (short)Random.Range(0, 100);
+
+        if (rnd < chanceToBreak)
+            spriteRenderer.color = new (0, 0, 0, 0.5f);
+        /*
+         * Dobuducna na nastavenie ineho spritu pre oneTouch plosinu
+         
+        if (rnd < oneTouchChance)
+            spriteRenderer.sprite = 
+        */
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Thread.Sleep(500);
-        if (rnd < 4)
-            gameObject.SetActive(false);
+        if (rnd < chanceToBreak)
+            Invoke(nameof(BreakPlatform), tiemToBreak);
+    }
+    private void BreakPlatform() 
+    {         
+        gameObject.SetActive(false);
     }
 }

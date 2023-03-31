@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlatformMove : MonoBehaviour
 {
-    [SerializeField] Transform posL, posR;
-    [SerializeField] float speed;
-    [SerializeField] int borders;
+    [SerializeField] private Transform posL, posR;
+    [SerializeField] private float speed = 30;
+    [SerializeField] private int borders;
     Vector2 targetPos;
     private void Start()
     {   

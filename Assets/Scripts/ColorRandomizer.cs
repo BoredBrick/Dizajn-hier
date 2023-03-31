@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColorRandomizer : MonoBehaviour
 {
-    void Awake()
+    void Start()
     {
         Color green = new(0.4334f, 0.78f, 0.234f);
         Color red = new(0.8117647f, 0.1803922f, 0.1764706f);

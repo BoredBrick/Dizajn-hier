@@ -4,10 +4,10 @@ using UnityEngine;
 public class SectionGenerator : MonoBehaviour
 {
     [SerializeField] private SectionBank bank;
-    [SerializeField] private Transform lastSection;
+    [SerializeField] private Transform lastSectionPosition;
     [SerializeField] private GameObject nextSectionsTrigger;
 
-    [SerializeField] private Vector3 newPosition = new(0, 0, 0);
+    [SerializeField] private Vector3 newPosition;
     private int section = 1, lvl = 0;
 
     List<Section> sectionsPool;
@@ -16,6 +16,7 @@ public class SectionGenerator : MonoBehaviour
 
     private void Start()
     {
+        newPosition = lastSectionPosition.position;
         SectionBank localBank = bank.GetComponent<SectionBank>();
         sectionsPool = localBank.GetSectionsEasy();
         sectionsMedium = localBank.GetSectionsMedium();
@@ -35,13 +36,17 @@ public class SectionGenerator : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            if (lastSectionPosition.GetComponent<Section>().getEndsOnLvl() > 0)
+            {
+                lvl += 100;
+            }
             GameObject nextSectionGenerator = null;
             for (int i = 0; i <= 5; i++)
             {
                 Section nextSection = sectionsPool[Random.Range(0, sectionsPool.Count)];
-                newPosition = lastSection.position + new Vector3(300 * section, lvl, 0);
+                newPosition = lastSectionPosition.position + new Vector3(300 * section, lvl, 0);
 
-                Instantiate(nextSection, newPosition, Quaternion.identity);
+                Transform tr = Instantiate(nextSection, newPosition, Quaternion.identity).transform;
 
                 if (i == 3)
                     nextSectionGenerator = Instantiate(nextSectionsTrigger, newPosition + new Vector3(-150, 30, 0), Quaternion.identity);
@@ -73,15 +78,16 @@ public class SectionGenerator : MonoBehaviour
                         break;
                 }
                 section++;
+
+                if (i == 5 && section > 1)
+                    nextSectionGenerator.GetComponent<SectionGenerator>().SetLastSectionPosition(tr);
             }
-            nextSectionGenerator.GetComponent<SectionGenerator>().setNextPosition(newPosition);
-            Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
         }
     }
 
-    public Vector3 getNextPosition() { return newPosition; }
-    public void setNextPosition(Vector3 newPosition)
+    public void SetLastSectionPosition(Transform lastSection)
     {
-        this.newPosition = newPosition;
+        this.lastSectionPosition = lastSection;
     }
 }

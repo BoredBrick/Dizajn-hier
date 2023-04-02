@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022268635015034082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 30, z: 0}
   m_LocalScale: {x: 10, y: 80, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -125,5 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bank: {fileID: 3641284346270558264, guid: f93904c5bce596a4baae38057a555963, type: 3}
-  lastSection: {fileID: 0}
+  lastSectionPosition: {fileID: 0}
   nextSectionsTrigger: {fileID: 1022268635015034082}
+  newPosition: {x: 0, y: 0, z: 0}

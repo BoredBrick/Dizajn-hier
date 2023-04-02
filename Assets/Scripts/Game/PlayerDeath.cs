@@ -13,12 +13,13 @@ public class PlayerDeath : MonoBehaviour
 
     void Update()
     {
-        if (rb.position.y < -20)
+        if (rb.position.y < -20 || transform.position.y < -20)        // Matusou kod mi nefungoval tak som si tam dovolil pridat tu cast s transform
         {
             if (PlayerProperties.playerLifes > 0)
             {
                 PlayerProperties.playerLifes--;
                 rb.position = new Vector2(-15f, 15f);
+                transform.position = new Vector3(0, 0, 0);
             } 
             else
             {

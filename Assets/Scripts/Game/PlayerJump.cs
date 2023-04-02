@@ -18,15 +18,22 @@ public class PlayerJump : MonoBehaviour
     }
 
     void Update()
-    {
-        
+    {        
         if (!GameProperties.isPaused)
         {
             if (Input.GetAxis("RTJump") > 0 && Mathf.Abs(rb.velocity.y) < 0.001f && IsGrounded())
             {
+                PlayerProperties.isStickActive = false;
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 PlayerProperties.speedForce = 40f;
-            }          
+            }
+            //Je treba aby sa dalo odrazit aj ked je si sticknuty toto nefunguje ale neico na tomto principe
+            if (Input.GetAxis("RTJump") > 0 && Mathf.Abs(rb.velocity.y) < 0.001f && PlayerProperties.isStickActive)
+            {
+                PlayerProperties.isStickActive = false;
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                PlayerProperties.speedForce = 40f;
+            }
 
             if (Mathf.Abs(rb.velocity.y) < 0.001f)
             {

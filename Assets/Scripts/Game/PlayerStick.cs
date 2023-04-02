@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.U2D;
 using UnityEngine;
 
 public class PlayerStick : MonoBehaviour
@@ -39,7 +36,7 @@ public class PlayerStick : MonoBehaviour
 
         if (Input.GetAxis("LTStick") == 0 || PlayerProperties.stickLength <= 0 || !PlayerProperties.isStickActive)
         {
-            rb.gravityScale = 1.0f;
+            rb.gravityScale = 1.0f;            
         }
 
         if (Input.GetAxis("LTStick") == 0 && Math.Round(originalStickLength - PlayerProperties.stickLength) > 1)

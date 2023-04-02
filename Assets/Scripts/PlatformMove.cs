@@ -26,13 +26,13 @@ public class PlatformMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {   
         //Treba aby mal hrac na nohach objekt s colliderom, ktory sluzi ako trigger
-        if (collision.CompareTag("Player")) 
+        if (collision.CompareTag("PlayerTrigger")) 
             collision.transform.parent.SetParent(this.transform);      
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-            collision.transform.parent.Find("Trigger").SetParent(null);
+        if (collision.CompareTag("PlayerTrigger"))
+            collision.transform.parent.SetParent(null);
     }
     
 }

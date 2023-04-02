@@ -8,7 +8,7 @@ public class SectionGenerator : MonoBehaviour
     [SerializeField] private GameObject nextSectionsTrigger;
 
     [SerializeField] private Vector3 newPosition = new(0, 0, 0);
-    private short section = 1, lvl = 0;
+    private int section = 1, lvl = 0;
 
     List<Section> sectionsPool;
     List<Section> sectionsMedium;

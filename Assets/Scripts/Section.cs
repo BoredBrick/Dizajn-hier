@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Section : MonoBehaviour    
 {
-    [SerializeField] private short endsOnLvl;
-    public short getEndsOnLvl()    { return endsOnLvl; }    
+    [SerializeField] private int endsOnLvl;
+    public int getEndsOnLvl()    { return endsOnLvl; }    
 }

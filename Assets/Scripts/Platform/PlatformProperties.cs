@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlatformProperties : MonoBehaviour
 {
     [SerializeField] private bool isStickable = false;
@@ -14,7 +12,7 @@ public class PlatformProperties : MonoBehaviour
     {
         if (isBrakeable)
         {
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();            
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             rnd = Random.Range(0, 100);
 
             if (rnd < chanceToBreak)
@@ -37,7 +35,7 @@ public class PlatformProperties : MonoBehaviour
         if (isBrakeable && rnd < chanceToBreak)
             Invoke(nameof(BreakPlatform), timeToBreak);
 
-        if (collision.gameObject.tag == "Player" && this.isStickable)
+        if (collision.gameObject.CompareTag("Player") && this.isStickable)
         {
             PlayerProperties.isStickActive = true;
             Debug.Log("Stick activated");
@@ -46,7 +44,7 @@ public class PlatformProperties : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && this.isStickable)
+        if (collision.gameObject.CompareTag("Player") && this.isStickable)
         {
             PlayerProperties.isStickActive = false;
             Debug.Log("Stick deactivated");

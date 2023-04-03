@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -9,22 +5,19 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
         speedForce = PlayerProperties.speedForce;
     }
 
     void Update()
     {
-        if (!GameProperties.isPaused)
-        {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            Vector2 movement = new Vector2(moveHorizontal, 0f);
-            transform.Translate(movement * speedForce * Time.deltaTime, Space.World);
-        }
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        Vector2 movement = new(moveHorizontal, 0f);
+        transform.Translate(speedForce * Time.deltaTime * movement, Space.World);
 
         speedForce = PlayerProperties.speedForce;
-       
-        
+
+
         /*
          *  -----------------------------------------------------------------
          *  ALTERNATIVE MOVEMENT USING RIGIDBODY

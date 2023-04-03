@@ -1,21 +1,23 @@
-using UnityEngine;
-
 public class PlayerDeath : MonoBehaviour
 {
-    void Update()            
+    private readonly int deathHeight = -100;
+    private static readonly Vector3 respawnPosition = new(0f, 0f, 0f);
+
+
+    void Update()
     {
-        if (transform.position.y < -100)       
+        if (transform.position.y < deathHeight)
         {
             if (PlayerProperties.playerLifes > 0)
             {
                 Debug.Log("Spadol");
                 PlayerProperties.playerLifes--;
-                transform.position = new Vector3(0, 0, 0);
-            } 
+                transform.position = respawnPosition;
+            }
             else
             {
                 GameProperties.isEnd = true;
-            }         
-        }   
+            }
+        }
     }
 }

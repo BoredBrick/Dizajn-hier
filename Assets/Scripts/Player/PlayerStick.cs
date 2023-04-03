@@ -16,9 +16,9 @@ public class PlayerStick : MonoBehaviour
     {
         if (Input.GetAxis("LTStick") > 0 && PlayerProperties.isStickActive)
         {
-            if (PlayerProperties.stickLength >= 0)
+            if (PlayerProperties.remainingStickTime >= 0)
             {
-                PlayerProperties.stickLength -= Time.deltaTime;
+                PlayerProperties.remainingStickTime -= Time.deltaTime;
 
                 rb.gravityScale = 0f;
                 float moveVertical = Input.GetAxis("Vertical");
@@ -27,23 +27,23 @@ public class PlayerStick : MonoBehaviour
             }
         }
 
-        if (Input.GetAxis("LTStick") == 0 || PlayerProperties.stickLength <= 0 || !PlayerProperties.isStickActive)
+        if (Input.GetAxis("LTStick") == 0 || PlayerProperties.remainingStickTime <= 0 || !PlayerProperties.isStickActive)
         {
             rb.gravityScale = 1.0f;
         }
 
-        if (Input.GetAxis("LTStick") == 0 && Math.Round(Constants.stickLength - PlayerProperties.stickLength) > 1)
+        if (Input.GetAxis("LTStick") == 0 && Math.Round(Constants.remainingStickTime - PlayerProperties.remainingStickTime) > 1)
         {
-            if (PlayerProperties.stickCooldown >= 0)
+            if (PlayerProperties.timeUntilStickRegen >= 0)
             {
-                PlayerProperties.stickCooldown -= Time.deltaTime;
+                PlayerProperties.timeUntilStickRegen -= Time.deltaTime;
             }
         }
 
-        if (PlayerProperties.stickCooldown <= 0)
+        if (PlayerProperties.timeUntilStickRegen <= 0)
         {
-            PlayerProperties.stickLength++;
-            PlayerProperties.stickCooldown = Constants.stickCooldown;
+            PlayerProperties.remainingStickTime++;
+            PlayerProperties.timeUntilStickRegen = Constants.timeUntilStickRegen;
         }
     }
 

@@ -36,15 +36,15 @@ public class PlayerColor : MonoBehaviour
         }
 
 
-        if (PlayerProperties.colorChangeCooldown >= 0)
+        if (PlayerProperties.remainingColorTime >= 0)
         {
-            PlayerProperties.colorChangeCooldown -= Time.deltaTime;
+            PlayerProperties.remainingColorTime -= Time.deltaTime;
         }
 
-        if (PlayerProperties.colorChangeCooldown <= 0 && PlayerProperties.colorResetCooldown >= 0)
+        if (PlayerProperties.remainingColorTime <= 0 && PlayerProperties.timeUntilColorReset >= 0)
         {
-            PlayerProperties.colorResetCooldown -= Time.deltaTime; //Preco sa toto meni?
-            renderer.material.color = Color.Lerp(PlayerProperties.playerColor, originalColor, Time.deltaTime / (Constants.colorResetCooldown / 2));
+            PlayerProperties.timeUntilColorReset -= Time.deltaTime;
+            renderer.material.color = Color.Lerp(PlayerProperties.playerColor, originalColor, Time.deltaTime / (Constants.timeUntilColorReset / 2));
         }
     }
 
@@ -52,8 +52,8 @@ public class PlayerColor : MonoBehaviour
     {
         renderer.material.color = newColor;
         PlayerProperties.playerColor = newColor;
-        PlayerProperties.colorResetCooldown = Constants.colorResetCooldown;
-        PlayerProperties.colorChangeCooldown = Constants.colorChangeCooldown;
+        PlayerProperties.timeUntilColorReset = Constants.timeUntilColorReset;
+        PlayerProperties.remainingColorTime = Constants.remainingColorTime;
 
     }
 }

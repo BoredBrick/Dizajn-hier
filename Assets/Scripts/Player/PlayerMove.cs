@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rb;

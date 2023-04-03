@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.U2D;
 using UnityEngine;
 
 public class PlayerStick : MonoBehaviour
@@ -11,30 +8,25 @@ public class PlayerStick : MonoBehaviour
     float originalStickCooldown;
     float speedForce;
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
         speedForce = PlayerProperties.speedForce;
         originalStickLength = PlayerProperties.stickLength;
         originalStickCooldown = PlayerProperties.stickCooldown;
     }
 
-    void Update()
-    {
+    void Update() {
         if (Input.GetAxis("LTStick") > 0 && PlayerProperties.isStickActive)
         {
             if (PlayerProperties.stickLength >= 0)
             {
                 PlayerProperties.stickLength -= Time.deltaTime;
-            
-                if (!GameProperties.isPaused)
-                {
-                    rb.gravityScale = 0f;
-                    float moveVertical = Input.GetAxis("Vertical");
-                    Vector2 movement = new Vector2(0f, moveVertical);
-                    transform.Translate(movement * Time.deltaTime * speedForce, Space.World);
-                }
-            }       
+
+                rb.gravityScale = 0f;
+                float moveVertical = Input.GetAxis("Vertical");
+                Vector2 movement = new Vector2(0f, moveVertical);
+                transform.Translate(movement * Time.deltaTime * speedForce, Space.World);
+            }
         }
 
         if (Input.GetAxis("LTStick") == 0 || PlayerProperties.stickLength <= 0 || !PlayerProperties.isStickActive)
@@ -46,7 +38,7 @@ public class PlayerStick : MonoBehaviour
         {
             if (PlayerProperties.stickCooldown >= 0)
             {
-                PlayerProperties.stickCooldown -= Time.deltaTime;             
+                PlayerProperties.stickCooldown -= Time.deltaTime;
             }
         }
 

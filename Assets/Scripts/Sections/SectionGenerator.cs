@@ -32,9 +32,9 @@ public class SectionGenerator : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (lastSectionPosition.GetComponent<Section>().getEndsOnLvl() > 0)
+            if (lastSectionPosition.GetComponent<Section>().GetEndsOnLvl() > 0)
             {
-                lvl += 100* lastSectionPosition.GetComponent<Section>().getEndsOnLvl();
+                lvl += 100* lastSectionPosition.GetComponent<Section>().GetEndsOnLvl();
             }
             GameObject nextSectionGenerator = null;
             for (int i = 0; i <= 5; i++)
@@ -59,7 +59,7 @@ public class SectionGenerator : MonoBehaviour
 
     private void IncreaseLvl(Section nextSection)
     {
-        switch (nextSection.GetComponent<Section>().getEndsOnLvl())
+        switch (nextSection.GetComponent<Section>().GetEndsOnLvl())
         {
             case -3:
                 lvl -= 300;

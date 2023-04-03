@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateGem : MonoBehaviour
@@ -12,6 +10,6 @@ public class RotateGem : MonoBehaviour
     }
     void Update()
     {
-        transform.Rotate(rotation * speed * Time.deltaTime);        
+        transform.Rotate(speed * Time.deltaTime * rotation);
     }
 }

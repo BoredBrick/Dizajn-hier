@@ -6,16 +6,17 @@ public class PlatformMove : MonoBehaviour
     [SerializeField] private float speed = 30;
     [SerializeField] private int borders;
     Vector2 targetPos;
+
     private void Start()
-    {   
-        targetPos = posR.position;        
+    {
+        targetPos = posR.position;
     }
     private void Update()
     {
-        if (Vector2.Distance(transform.position, posR.position) < borders) 
-            targetPos = posL.position; 
-        if (Vector2.Distance(transform.position, posL.position) < borders) 
-            targetPos = posR.position; 
+        if (Vector2.Distance(transform.position, posR.position) < borders)
+            targetPos = posL.position;
+        if (Vector2.Distance(transform.position, posL.position) < borders)
+            targetPos = posR.position;
 
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
     }

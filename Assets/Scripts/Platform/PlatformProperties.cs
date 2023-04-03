@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//TODO UPRATAT
 public class PlatformProperties : MonoBehaviour
 {
     [SerializeField] private bool isStickable = false;

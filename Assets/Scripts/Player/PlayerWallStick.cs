@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+//TODO TENTO SUBOR TREBA?
 public class PlayerWallStick : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -15,12 +13,12 @@ public class PlayerWallStick : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
+
     }
 
     // Update is called once per frame
@@ -41,9 +39,9 @@ public class PlayerWallStick : MonoBehaviour
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
         }
-        else 
-        { 
-            isWallSliding = false; 
+        else
+        {
+            isWallSliding = false;
         }
     }
 }

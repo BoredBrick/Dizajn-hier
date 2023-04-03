@@ -5,12 +5,14 @@ public class PlayerMove : MonoBehaviour
     Rigidbody2D rb;
     float speedForce;
 
-    void Start() {
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
         speedForce = PlayerProperties.speedForce;
     }
 
-    void Update() {
+    void Update()
+    {
         float moveHorizontal = Input.GetAxis("Horizontal");
         Vector2 movement = new Vector2(moveHorizontal, 0f);
         transform.Translate(movement * speedForce * Time.deltaTime, Space.World);

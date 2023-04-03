@@ -6,12 +6,14 @@ public class PlayerStick : MonoBehaviour
     private Rigidbody2D rb;
     private float speedForce;
 
-    void Start() {
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
         speedForce = PlayerProperties.speedForce;
     }
 
-    void Update() {
+    void Update()
+    {
         if (Input.GetAxis("LTStick") > 0 && PlayerProperties.isStickActive)
         {
             if (PlayerProperties.stickLength >= 0)

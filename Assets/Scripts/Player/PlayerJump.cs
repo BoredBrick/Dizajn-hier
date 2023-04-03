@@ -7,14 +7,16 @@ public class PlayerJump : MonoBehaviour
     private float gravityForce;
     private float distanceToGround;
 
-    void Start() {
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
         jumpForce = PlayerProperties.jumpForce;
         gravityForce = PlayerProperties.gravityForce;
         distanceToGround = GetComponent<CapsuleCollider2D>().bounds.extents.y;
     }
 
-    void Update() {
+    void Update()
+    {
         if (Mathf.Abs(rb.velocity.y) < 0.001f)
         {
             PlayerProperties.speedForce = 50f;
@@ -27,14 +29,16 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         if (Mathf.Abs(rb.velocity.y) > 0.001f && !PlayerProperties.isStickActive)
         {
             rb.velocity += gravityForce * Time.deltaTime * Vector2.down;
         }
     }
 
-    private bool IsGrounded() {
+    private bool IsGrounded()
+    {
         return Physics2D.Raycast(transform.position, -Vector2.up, distanceToGround + 0.1f);
     }
 }

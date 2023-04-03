@@ -5,14 +5,16 @@ public class PlayerColor : MonoBehaviour
     private Color originalColor;
     private new Renderer renderer;
 
-    void Start() {
+    void Start()
+    {
         this.renderer = GetComponent<Renderer>();
         PlayerProperties.playerColor = this.gameObject.GetComponent<Renderer>().material.color;
         originalColor = PlayerProperties.playerColor;
     }
 
     //Cele tieto farby sa este pomenia
-    void Update() {
+    void Update()
+    {
         if (Input.GetButtonDown("AButtonGreen") && PlayerProperties.playerColor != Color.green)
         {
             ChangeColor(new Color(0.4334f, 0.78f, 0.234f));
@@ -46,7 +48,8 @@ public class PlayerColor : MonoBehaviour
         }
     }
 
-    void ChangeColor(Color newColor) {
+    void ChangeColor(Color newColor)
+    {
         renderer.material.color = newColor;
         PlayerProperties.playerColor = newColor;
         PlayerProperties.colorResetCooldown = Constants.colorResetCooldown;

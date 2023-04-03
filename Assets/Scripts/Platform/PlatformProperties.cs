@@ -6,7 +6,8 @@ public class PlatformProperties : MonoBehaviour
     public Color platformColor;
 
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("Player") && this.isStickable)
         {
             PlayerProperties.isStickActive = true;
@@ -14,7 +15,8 @@ public class PlatformProperties : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
+    private void OnCollisionExit2D(Collision2D collision)
+    {
         if (collision.gameObject.CompareTag("Player") && this.isStickable)
         {
             PlayerProperties.isStickActive = false;

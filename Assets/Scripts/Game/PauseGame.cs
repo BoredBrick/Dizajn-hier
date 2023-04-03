@@ -3,7 +3,8 @@ using UnityEngine;
 public class PauseGame : MonoBehaviour
 {
     //TODO Pridat osetrenie na pauznutie len v hre + dorobit pause screen
-    void Update() {
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetButtonDown("StartButtonPause"))
         {
             if (GameProperties.isPaused)

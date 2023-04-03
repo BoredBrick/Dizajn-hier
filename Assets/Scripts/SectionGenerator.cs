@@ -7,30 +7,26 @@ public class SectionGenerator : MonoBehaviour
     [SerializeField] private Transform lastSectionPosition;
     [SerializeField] private GameObject nextSectionsTrigger;
 
-    [SerializeField] private Vector3 newPosition;
+    private Vector3 newPosition;
     private int section = 1, lvl = 0;
+    private SectionBank localBank;
 
-    List<Section> sectionsPool;
-    List<Section> sectionsMedium;
-    List<Section> sectionsHard;
+    [SerializeField] List<Section> sectionsPool;
 
     private void Start()
     {
         newPosition = lastSectionPosition.position;
-        SectionBank localBank = bank.GetComponent<SectionBank>();
+        localBank = bank.GetComponent<SectionBank>();
         sectionsPool = localBank.GetSectionsEasy();
-        sectionsMedium = localBank.GetSectionsMedium();
-        sectionsHard = localBank.GetSectionsHard();
     }
     private void Update()
     {
-        //Distance sa vezme z pocitadla skore
-        int distance = 0;
-            
-        if (distance >= 1000 && distance < 2000)
-            sectionsPool.AddRange(sectionsMedium);
-        else if (distance >= 2000)
-            sectionsPool.AddRange(sectionsHard);
+        float distance = GameController.GetDistance();        
+        if (distance == 500)
+            sectionsPool.AddRange(localBank.GetSectionsMedium());
+        else if (distance == 1500)
+            sectionsPool.AddRange(localBank.GetSectionsHard());
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -38,7 +34,7 @@ public class SectionGenerator : MonoBehaviour
         {
             if (lastSectionPosition.GetComponent<Section>().getEndsOnLvl() > 0)
             {
-                lvl += 100;
+                lvl += 100* lastSectionPosition.GetComponent<Section>().getEndsOnLvl();
             }
             GameObject nextSectionGenerator = null;
             for (int i = 0; i <= 5; i++)
@@ -51,38 +47,43 @@ public class SectionGenerator : MonoBehaviour
                 if (i == 3)
                     nextSectionGenerator = Instantiate(nextSectionsTrigger, newPosition + new Vector3(-150, 30, 0), Quaternion.identity);
 
-                switch (nextSection.GetComponent<Section>().getEndsOnLvl())
-                {
-                    case -3:
-                        lvl -= 300;
-                        break;
-                    case -2:
-                        lvl -= 200;
-                        break;
-                    case -1:
-                        lvl -= 100;
-                        break;
-
-                    case 1:
-                        lvl += 100;
-                        break;
-                    case 2:
-                        lvl += 200;
-                        break;
-                    case 3:
-                        lvl += 300;
-                        break;
-
-                    default:
-                        lvl += 0;
-                        break;
-                }
+                IncreaseLvl(nextSection);
                 section++;
 
                 if (i == 5 && section > 1)
                     nextSectionGenerator.GetComponent<SectionGenerator>().SetLastSectionPosition(tr);
             }
             Destroy(gameObject);
+        }
+    }
+
+    private void IncreaseLvl(Section nextSection)
+    {
+        switch (nextSection.GetComponent<Section>().getEndsOnLvl())
+        {
+            case -3:
+                lvl -= 300;
+                break;
+            case -2:
+                lvl -= 200;
+                break;
+            case -1:
+                lvl -= 100;
+                break;
+
+            case 1:
+                lvl += 100;
+                break;
+            case 2:
+                lvl += 200;
+                break;
+            case 3:
+                lvl += 300;
+                break;
+
+            default:
+                lvl += 0;
+                break;
         }
     }
 

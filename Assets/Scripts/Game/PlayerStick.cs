@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-
 public class PlayerStick : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -17,7 +16,7 @@ public class PlayerStick : MonoBehaviour
     }
 
     void Update()
-    {
+    {      
         if (Input.GetAxis("LTStick") > 0 && PlayerProperties.isStickActive)
         {
             if (PlayerProperties.stickLength >= 0)
@@ -34,9 +33,9 @@ public class PlayerStick : MonoBehaviour
             }       
         }
 
-        if (Input.GetAxis("LTStick") == 0 || PlayerProperties.stickLength <= 0 || !PlayerProperties.isStickActive)
+         if (Input.GetAxis("LTStick") == 0 || PlayerProperties.stickLength <= 0 || !PlayerProperties.isStickActive)
         {
-            rb.gravityScale = 1.0f;            
+            rb.gravityScale = 6;
         }
 
         if (Input.GetAxis("LTStick") == 0 && Math.Round(originalStickLength - PlayerProperties.stickLength) > 1)

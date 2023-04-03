@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecef05481435de74f97702d4e5a63884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 6349047311117262076, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+  platformColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &7573768157528545898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,4 +135,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStickable: 1
-  platformColor: {r: 0, g: 0, b: 0, a: 0}

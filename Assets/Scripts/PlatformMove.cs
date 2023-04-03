@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlatformMove : MonoBehaviour
@@ -22,17 +19,17 @@ public class PlatformMove : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
     }
-    
-    private void OnTriggerEnter2D(Collider2D collision)
-    {   
-        //Treba aby mal hrac na nohach objekt s colliderom, ktory sluzi ako trigger
-        if (collision.CompareTag("PlayerTrigger")) 
-            collision.transform.parent.SetParent(this.transform);      
-    }
-    private void OnTriggerExit2D(Collider2D collision)
+    /*
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("PlayerTrigger"))
-            collision.transform.parent.SetParent(null);
+        if (collision.gameObject.tag == "Player")
+            collision.transform.SetParent(transform);
     }
-    
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+            collision.transform.SetParent(null);
+    }
+    */
+
 }

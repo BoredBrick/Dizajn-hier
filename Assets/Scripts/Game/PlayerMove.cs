@@ -21,8 +21,10 @@ public class PlayerMove : MonoBehaviour
             Vector2 movement = new Vector2(moveHorizontal, 0f);
             transform.Translate(movement * speedForce * Time.deltaTime, Space.World);
         }
-        
+
         speedForce = PlayerProperties.speedForce;
+       
+        
         /*
          *  -----------------------------------------------------------------
          *  ALTERNATIVE MOVEMENT USING RIGIDBODY

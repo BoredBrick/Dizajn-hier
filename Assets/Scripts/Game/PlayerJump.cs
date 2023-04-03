@@ -8,6 +8,7 @@ public class PlayerJump : MonoBehaviour
     float jumpForce;
     float gravityForce;
     float distanceToGround;
+    [SerializeField] bool isGrounded;
 
     void Start()
     {
@@ -21,23 +22,17 @@ public class PlayerJump : MonoBehaviour
     {        
         if (!GameProperties.isPaused)
         {
-            if (Input.GetAxis("RTJump") > 0 && Mathf.Abs(rb.velocity.y) < 0.001f && IsGrounded())
+            if (Input.GetAxis("RTJump") > 0 && Mathf.Abs(rb.velocity.y) < 0.001f && isGrounded)
             {
                 PlayerProperties.isStickActive = false;
+                
+                PlayerProperties.speedForce = 100f;
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                PlayerProperties.speedForce = 40f;
-            }
-            //Je treba aby sa dalo odrazit aj ked je si sticknuty toto nefunguje ale neico na tomto principe
-            if (Input.GetAxis("RTJump") > 0 && Mathf.Abs(rb.velocity.y) < 0.001f && PlayerProperties.isStickActive)
-            {
-                PlayerProperties.isStickActive = false;
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                PlayerProperties.speedForce = 40f;
             }
 
             if (Mathf.Abs(rb.velocity.y) < 0.001f)
             {
-                PlayerProperties.speedForce = 50f;
+                PlayerProperties.speedForce = 120f;
             }
         }
     }
@@ -53,5 +48,20 @@ public class PlayerJump : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.Raycast(transform.position, -Vector2.up, distanceToGround + 0.1f);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+            isGrounded = true;
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+            isGrounded = true;
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+            isGrounded = false;
     }
 }

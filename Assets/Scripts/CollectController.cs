@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CollectGem : MonoBehaviour
+public class CollectController : MonoBehaviour
 {
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Collectable"))
         {
-            /*
-             * PlayerAddGem
-             */
+            if (collision.gameObject.name == "Gem")
+            {
+                PlayerProperties.playerGems++;                
+            }
             collision.gameObject.SetActive(false);
         }            
     }

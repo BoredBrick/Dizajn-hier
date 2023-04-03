@@ -37,7 +37,7 @@ public class PlatformColor : MonoBehaviour
         else
         {
             gameObject.GetComponent<Collider2D>().isTrigger = true;
-            player.transform.SetParent(null);
-        }            
+            //player.transform.SetParent(null); TODO PRECO???
+        }
     }
 }

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerDeath : MonoBehaviour
 {
     private readonly int deathHeight = -100;

@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    Rigidbody2D rb;
-    float jumpForce;
-    float gravityForce;
-    float distanceToGround;
+    private Rigidbody2D rb;
+    private float jumpForce;
+    private float gravityForce;
+    private float distanceToGround;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -15,23 +15,22 @@ public class PlayerJump : MonoBehaviour
     }
 
     void Update() {
-
-        if (Input.GetAxis("RTJump") > 0 && Mathf.Abs(rb.velocity.y) < 0.001f && IsGrounded())
-        {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            PlayerProperties.speedForce = 40f;
-        }
-
         if (Mathf.Abs(rb.velocity.y) < 0.001f)
         {
             PlayerProperties.speedForce = 50f;
+
+            if (Input.GetAxis("RTJump") > 0 && IsGrounded())
+            {
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                PlayerProperties.speedForce = 40f;
+            }
         }
     }
 
     private void FixedUpdate() {
         if (Mathf.Abs(rb.velocity.y) > 0.001f && !PlayerProperties.isStickActive)
         {
-            rb.velocity += Vector2.down * gravityForce * Time.deltaTime;
+            rb.velocity += gravityForce * Time.deltaTime * Vector2.down;
         }
     }
 

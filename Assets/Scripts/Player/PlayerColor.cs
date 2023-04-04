@@ -4,6 +4,8 @@ public class PlayerColor : MonoBehaviour
 {
     private Color originalColor;
     private new Renderer renderer;
+    private readonly float colorDuration = 10f;
+    private readonly float colorResetDuration = 10f;
 
     void Start()
     {
@@ -46,7 +48,7 @@ public class PlayerColor : MonoBehaviour
         {
             PlayerProperties.timeUntilColorReset -= Time.deltaTime;
             renderer.material.color = Color
-                .Lerp(PlayerProperties.playerColor, originalColor, Time.deltaTime / (Constants.timeUntilColorReset / 2));
+                .Lerp(PlayerProperties.playerColor, originalColor, Time.deltaTime / (colorResetDuration / 2));
         }
 
         if (PlayerProperties.colorChangeCountdown <= 0)
@@ -58,7 +60,7 @@ public class PlayerColor : MonoBehaviour
     void ChangeColor(Color newColor)
     {
         renderer.material.color = newColor;
-        PlayerProperties.timeUntilColorReset = Constants.timeUntilColorReset;
-        PlayerProperties.remainingColorTime = Constants.remainingColorTime;
+        PlayerProperties.timeUntilColorReset = colorResetDuration;
+        PlayerProperties.remainingColorTime = colorDuration;
     }
 }

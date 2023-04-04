@@ -503,8 +503,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429087230}
-  - component: {fileID: 429087229}
   - component: {fileID: 429087231}
+  - component: {fileID: 429087232}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -512,22 +512,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &429087229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429087228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e474b7599cbb8048af52d8f2a4ac2aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1826544683}
-  distanceValue: {fileID: 45357806}
-  lifesValue: {fileID: 1184500846}
-  gemsValue: {fileID: 135348348}
 --- !u!4 &429087230
 Transform:
   m_ObjectHideFlags: 0
@@ -556,6 +540,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 1954727448}
+--- !u!114 &429087232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429087228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6689a9cb0666d47b1cceb858177777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1826544683}
+  distanceValue: {fileID: 45357808}
+  livesValue: {fileID: 1184500848}
+  gemsValue: {fileID: 135348349}
 --- !u!4 &463257808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7434945314767880084, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 504056874}
   - component: {fileID: 504056873}
   m_Layer: 5
-  m_Name: Lifes
+  m_Name: Lives
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

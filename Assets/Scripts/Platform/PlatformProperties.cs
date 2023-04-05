@@ -9,6 +9,7 @@ public class PlatformProperties : MonoBehaviour
     [SerializeField] private int chanceToBreak = 80;
     [SerializeField] private float timeToBreak = 1f;
     [SerializeField] private float timeToRespawn = 3f;
+    [SerializeField] private Sprite broakenPlatform;
 
     private int rnd;
 
@@ -24,12 +25,9 @@ public class PlatformProperties : MonoBehaviour
                 Color color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.3f);
                 spriteRenderer.color = color;
             }
-            /*
-             * Dobuducna na nastavenie ineho spritu pre oneTouch plosinu
 
-            if (rnd < oneTouchChance)
-                spriteRenderer.sprite = 
-            */
+            if (rnd < chanceToBreak)
+                spriteRenderer.sprite = broakenPlatform;           
 
         }      
     }

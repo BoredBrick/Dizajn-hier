@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public static class PlayerProperties
@@ -16,4 +17,15 @@ public static class PlayerProperties
     public static float colorChangeCooldown = 10f;
     public static float colorChangeCountdown = 10f;
     public static int distance = 0;
+
+    private static Vector3 checkpoint;
+
+    public static void SetCheckpoint(Vector3 chp)
+    {
+        checkpoint = chp;
+    }
+    public static Vector3 GetCheckpoint()
+    {
+        return checkpoint;
+    }
 }

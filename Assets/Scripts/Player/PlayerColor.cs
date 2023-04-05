@@ -14,7 +14,6 @@ public class PlayerColor : MonoBehaviour
         originalColor = PlayerProperties.playerColor;
     }
 
-    //Cele tieto farby sa este pomenia
     void Update()
     {
         if (GameProperties.isPaused)

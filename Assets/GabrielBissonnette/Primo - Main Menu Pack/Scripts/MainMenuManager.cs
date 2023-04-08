@@ -96,6 +96,7 @@ public class MainMenuManager : MonoBehaviour
     public void RandomColor()
     {
         mainColor = Colors.GetRandomColor();
+        UIEditorUpdate();
     }
 
     void Start()

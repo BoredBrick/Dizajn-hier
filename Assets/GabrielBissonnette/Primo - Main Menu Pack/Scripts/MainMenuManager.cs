@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,7 +10,7 @@ public class MainMenuManager : MonoBehaviour
     #region Variables
 
     [Header("On/Off")]
-    [Space(5)] [SerializeField] bool showBackground;
+    [Space(5)][SerializeField] bool showBackground;
     [SerializeField] bool showSocial1;
     [SerializeField] bool showSocial2;
     [SerializeField] bool showSocial3;
@@ -19,27 +18,27 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] bool showFade;
 
     [Header("Scene")]
-    [Space(10)] [SerializeField] string sceneToLoad;
+    [Space(10)][SerializeField] string sceneToLoad;
 
     [Header("Sprites")]
-    [Space(10)] [SerializeField] Sprite logo;
+    [Space(10)][SerializeField] Sprite logo;
     [SerializeField] Sprite background;
     [SerializeField] Sprite buttons;
 
     [Header("Color")]
-    [Space(10)] [SerializeField] Color32 mainColor;
+    [Space(10)][SerializeField] Color32 mainColor;
     [SerializeField] Color32 secondaryColor;
 
     [Header("Version")]
-    [Space(10)] [SerializeField] string version = "v.0105";
+    [Space(10)][SerializeField] string version = "v.0105";
 
     [Header("Texts")]
-    [Space(10)] [SerializeField] string play = "Play";
+    [Space(10)][SerializeField] string play = "Play";
     [SerializeField] string settings = "Settings";
     [SerializeField] string quit = "Quit";
 
     [Header("Social")]
-    [Space(10)] [SerializeField] Sprite social1Icon;
+    [Space(10)][SerializeField] Sprite social1Icon;
     [SerializeField] string social1Link;
     [Space(5)]
     [SerializeField] Sprite social2Icon;
@@ -50,7 +49,7 @@ public class MainMenuManager : MonoBehaviour
     List<string> links = new List<string>();
 
     [Header("Audio")]
-    [Space(10)] [SerializeField] float defaultVolume = 0.8f;
+    [Space(10)][SerializeField] float defaultVolume = 0.8f;
     [SerializeField] AudioClip uiClick;
     [SerializeField] AudioClip uiHover;
     [SerializeField] AudioClip uiSpecial;
@@ -68,23 +67,23 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] Image backgroundImage;
 
     [Header("Fade")]
-    [Space(10)] [SerializeField] Animator fadeAnimator;
+    [Space(10)][SerializeField] Animator fadeAnimator;
 
     [Header("Color Elements")]
-    [Space(5)] [SerializeField] Image[] mainColorImages;
+    [Space(5)][SerializeField] Image[] mainColorImages;
     [SerializeField] TextMeshProUGUI[] mainColorTexts;
     [SerializeField] Image[] secondaryColorImages;
     [SerializeField] TextMeshProUGUI[] secondaryColorTexts;
     [SerializeField] Image[] buttonsElements;
 
     [Header("Texts")]
-    [Space(10)] [SerializeField] TextMeshProUGUI playText;
+    [Space(10)][SerializeField] TextMeshProUGUI playText;
     [SerializeField] TextMeshProUGUI settingsText;
     [SerializeField] TextMeshProUGUI quitText;
-    [SerializeField] TextMeshProUGUI versionText;   
+    [SerializeField] TextMeshProUGUI versionText;
 
     [Header("Settings")]
-    [Space(10)] [SerializeField] Slider volumeSlider;
+    [Space(10)][SerializeField] Slider volumeSlider;
     [SerializeField] TMP_Dropdown resolutionDropdown;
 
     [Header("Audio")]
@@ -94,12 +93,17 @@ public class MainMenuManager : MonoBehaviour
 
     #endregion
 
+    public void RandomColor()
+    {
+        mainColor = Colors.GetRandomColor();
+    }
+
     void Start()
     {
+        RandomColor();
         SetStartUI();
         ProcessLinks();
         SetStartVolume();
-        //PrepareResolutions();
     }
 
     private void SetStartUI()
@@ -114,7 +118,6 @@ public class MainMenuManager : MonoBehaviour
         // Used to update the UI when not in play mode
 
         #region Sprites
-
         // Logo
         if (logoImage != null)
         {
@@ -212,7 +215,7 @@ public class MainMenuManager : MonoBehaviour
     #region Links
     public void OpenLink(int _index)
     {
-        if(links[_index].Length > 0)
+        if (links[_index].Length > 0)
             Application.OpenURL(links[_index]);
     }
 
@@ -249,7 +252,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+                 Application.Quit();
+#endif
     }
     #endregion
 
@@ -326,10 +333,10 @@ public class MainMenuManager : MonoBehaviour
         {
             string option = resolutions[i].width + " x " + resolutions[i].height;
 
-            if(!options.Contains(option))
+            if (!options.Contains(option))
                 options.Add(option);
 
-            if(i == resolutions.Length - 1)
+            if (i == resolutions.Length - 1)
             {
                 currentResolutionIndex = i;
             }

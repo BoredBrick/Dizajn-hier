@@ -173,14 +173,7 @@ public class MainMenuManager : MonoBehaviour
 
         #region Texts
 
-        if (playText != null)
-            playText.text = play;
 
-        if (settingsText != null)
-            settingsText.text = settings;
-
-        if (quitText != null)
-            quitText.text = quit;
 
         // Version number
         versionText.gameObject.SetActive(showVersion);

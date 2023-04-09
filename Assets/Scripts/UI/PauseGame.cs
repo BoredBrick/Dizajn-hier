@@ -1,25 +1,50 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
     public GameObject pauseScreen;
-    //TODO Pridat osetrenie na pauznutie len v hre + dorobit pause screen
+    public Image resumeButton;
+    public Image menuButton;
+    public TMP_Text pausedText;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetButtonDown("StartButtonPause"))
         {
             if (pauseScreen.activeSelf)
             {
-                Time.timeScale = 1;
-                pauseScreen.SetActive(false);
-                GameProperties.isPaused = false;
+                Unpause();
             }
             else
             {
                 Time.timeScale = 0;
                 pauseScreen.SetActive(true);
+                SetToPlayerColors();
                 GameProperties.isPaused = true;
             }
         }
+    }
+
+    public void Unpause()
+    {
+        Time.timeScale = 1;
+        pauseScreen.SetActive(false);
+        GameProperties.isPaused = false;
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
+    private void SetToPlayerColors()
+    {
+        Color color = PlayerProperties.playerColor;
+        resumeButton.color = color;
+        menuButton.color = color;
+        pausedText.color = color;
     }
 }

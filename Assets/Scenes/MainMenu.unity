@@ -2194,7 +2194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4993120331246417489, guid: 5abfb6058b31cb244a131ed4d78f1dd6, type: 3}
       propertyPath: m_Name
-      value: Demo2
+      value: MenuObject
       objectReference: {fileID: 0}
     - target: {fileID: 4993120331284469854, guid: 5abfb6058b31cb244a131ed4d78f1dd6, type: 3}
       propertyPath: m_Enabled
@@ -2397,6 +2397,10 @@ PrefabInstance:
       value: v.01
       objectReference: {fileID: 0}
     - target: {fileID: 5287041572057017300, guid: 5abfb6058b31cb244a131ed4d78f1dd6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287041572150512728, guid: 5abfb6058b31cb244a131ed4d78f1dd6, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}

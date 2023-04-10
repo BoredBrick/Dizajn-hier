@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
-    public GameObject pauseScreen;
-    public Image resumeButton;
-    public Image menuButton;
-    public TMP_Text pausedText;
+    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private Image resumeButton;
+    [SerializeField] private Image menuButton;
+    [SerializeField] private TMP_Text pausedText;
 
     void Update()
     {

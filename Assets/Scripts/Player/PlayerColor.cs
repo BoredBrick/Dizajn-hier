@@ -9,12 +9,11 @@ public class PlayerColor : MonoBehaviour
 
     void Start()
     {
-        this.renderer = GetComponent<Renderer>();
+        renderer = GetComponent<Renderer>();
         PlayerProperties.playerColor = renderer.material.color;
         originalColor = PlayerProperties.playerColor;
     }
 
-    //Cele tieto farby sa este pomenia
     void Update()
     {
         if (GameProperties.isPaused)
@@ -22,7 +21,7 @@ public class PlayerColor : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("AButtonGreen") || Input.GetKeyDown(KeyCode.G) && PlayerProperties.playerColor != Colors.green)
+        if (Input.GetButtonDown("AButtonGreen") && PlayerProperties.playerColor != Colors.green)
         {
             ChangeColor(Colors.green);
         }
@@ -59,7 +58,6 @@ public class PlayerColor : MonoBehaviour
         if (PlayerProperties.colorChangeCountdown <= 0)
         {
             PlayerProperties.playerColor = originalColor;
-            Debug.Log(originalColor);
         }
     }
 

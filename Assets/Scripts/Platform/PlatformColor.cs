@@ -25,7 +25,8 @@ public class PlatformColor : MonoBehaviour
         {
             currentPlayerColor = PlayerProperties.playerColor;
 
-            if (PlayerProperties.playerColor.Equals(platformColor) && !PlayerProperties.playerColor.Equals(playerColor))
+            if (PlayerProperties.playerColor.Equals(platformColor) 
+                && !PlayerProperties.playerColor.Equals(playerColor))
             {
                 collider.isTrigger = false;
             }
@@ -46,11 +47,31 @@ public class PlatformColor : MonoBehaviour
         CheckCollision(other);
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        CheckCollision(collision.collider);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        CheckCollision(other);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        CheckCollision(collision.collider);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        CheckCollision(other);
+    }
+
     private void CheckCollision(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player")
             && PlayerProperties.playerColor.Equals(platformColor)
-            && !PlayerProperties.playerColor.Equals(playerColor))
+            )
         {
             this.collider.isTrigger = false;
         }
@@ -59,4 +80,8 @@ public class PlatformColor : MonoBehaviour
             this.collider.isTrigger = true;
         }
     }
+
+    public Color getPlayerColor() { return currentPlayerColor; }
+
+    public Color getPlatformColor() { return platformColor; }
 }

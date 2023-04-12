@@ -7,7 +7,7 @@ public class PlayerJump : MonoBehaviour
     private float gravityForce;
     private float distanceToGround;
     [SerializeField]
-    bool isGrounded;
+    bool touchedCeiling;
 
     void Start()
     {
@@ -25,6 +25,7 @@ public class PlayerJump : MonoBehaviour
 
             if (Input.GetAxis("RTJump") > 0 && IsGrounded())
             {
+                Debug.Log("Grounded");
                 PlayerProperties.isStickActive = false;
 
                 PlayerProperties.speedForce = 100f;
@@ -43,22 +44,44 @@ public class PlayerJump : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.Raycast(transform.position, -Vector2.up, distanceToGround + 0.1f);
+        if (!touchedCeiling && Physics2D.Raycast(transform.position, -Vector2.up, distanceToGround + 0.1f))
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform"))
-            isGrounded = true;
+        if (collision.gameObject.CompareTag("Ceiling"))
+            touchedCeiling = true;
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform"))
-            isGrounded = true;
+        if (collision.gameObject.CompareTag("Ceiling"))
+            touchedCeiling = true;
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform"))
-            isGrounded = false;
+        if (collision.gameObject.CompareTag("Ceiling"))
+            touchedCeiling = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Ceiling"))
+            touchedCeiling = true;
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Ceiling"))
+            touchedCeiling = true;
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Ceiling"))
+            touchedCeiling = false;
     }
 }

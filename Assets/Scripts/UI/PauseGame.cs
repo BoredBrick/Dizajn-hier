@@ -1,13 +1,15 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
     [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private Image resumeButton;
-    [SerializeField] private Image menuButton;
+    [SerializeField] private GameObject resumeButton;
+    [SerializeField] private Image resumeButtonImage;
+    [SerializeField] private Image menuButtonImage;
     [SerializeField] private TMP_Text pausedText;
 
     void Update()
@@ -24,6 +26,7 @@ public class PauseGame : MonoBehaviour
                 pauseScreen.SetActive(true);
                 SetToPlayerColors();
                 GameProperties.isPaused = true;
+                EventSystem.current.SetSelectedGameObject(resumeButton);
             }
         }
     }
@@ -43,8 +46,8 @@ public class PauseGame : MonoBehaviour
     private void SetToPlayerColors()
     {
         Color color = PlayerProperties.playerColor;
-        resumeButton.color = color;
-        menuButton.color = color;
+        resumeButtonImage.color = color;
+        menuButtonImage.color = color;
         pausedText.color = color;
     }
 }

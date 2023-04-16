@@ -10,7 +10,8 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-        PlayerProperties.distance = (int)((player.transform.position.x + player.transform.position.y) / 10);
+        int distance = (int)((player.transform.position.x + player.transform.position.y) / 10);
+        PlayerProperties.distance = distance >= 0 ? distance : 0;
         distanceValue.text = PlayerProperties.distance.ToString();
         livesValue.text = PlayerProperties.playerLifes.ToString();
         gemsValue.text = PlayerProperties.playerGems.ToString();

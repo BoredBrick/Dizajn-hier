@@ -1159,6 +1159,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1973308590616408528, guid: 5b7f6c3f7dc9519478c5c2c2412b8728, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b7f6c3f7dc9519478c5c2c2412b8728, type: 3}
+--- !u!1 &1077252221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3404872596767603747, guid: 0b84ca9eb59113f4997f9a5c47a7f04a, type: 3}
+  m_PrefabInstance: {fileID: 1173777734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142264281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3404872596767603747, guid: 0b84ca9eb59113f4997f9a5c47a7f04a, type: 3}
@@ -1459,6 +1464,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3404872596767603746, guid: 0b84ca9eb59113f4997f9a5c47a7f04a, type: 3}
   m_PrefabInstance: {fileID: 1173777734}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1173777738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3404872596767603748, guid: 0b84ca9eb59113f4997f9a5c47a7f04a, type: 3}
+  m_PrefabInstance: {fileID: 1173777734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077252221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184500846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,6 +2391,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1514717887347843785, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: menuButton
+      value: 
+      objectReference: {fileID: 1077252221}
+    - target: {fileID: 1514717887347843785, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: deathScreen
+      value: 
+      objectReference: {fileID: 1821613874}
+    - target: {fileID: 1514717887347843785, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: gameOverText
+      value: 
+      objectReference: {fileID: 1373502505}
+    - target: {fileID: 1514717887347843785, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: menuButtonImage
+      value: 
+      objectReference: {fileID: 1173777738}
     - target: {fileID: 6349047311117262072, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
       propertyPath: m_RootOrder
       value: 4

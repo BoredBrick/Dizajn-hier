@@ -101,6 +101,7 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         RandomColor();
         SetStartUI();
         ProcessLinks();

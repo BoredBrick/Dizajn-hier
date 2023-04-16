@@ -109,7 +109,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void SetStartUI()
     {
-        //fadeAnimator.SetTrigger("FadeIn");
+        fadeAnimator.SetTrigger("FadeIn");
         homePanel.SetActive(true);
         settingsPanel.SetActive(false);
     }
@@ -232,7 +232,6 @@ public class MainMenuManager : MonoBehaviour
     {
         // Fade Animation
         fadeAnimator.SetTrigger("FadeOut");
-
         StartCoroutine(WaitToLoadLevel());
     }
 

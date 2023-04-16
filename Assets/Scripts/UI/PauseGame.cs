@@ -40,6 +40,7 @@ public class PauseGame : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 

@@ -12,6 +12,9 @@ public class PauseGame : MonoBehaviour
     [SerializeField] private Image menuButtonImage;
     [SerializeField] private TMP_Text pausedText;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip buttonSelect;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetButtonDown("StartButtonPause"))
@@ -50,5 +53,10 @@ public class PauseGame : MonoBehaviour
         resumeButtonImage.color = color;
         menuButtonImage.color = color;
         pausedText.color = color;
+    }
+
+    public void ButtonSelectSound()
+    {
+        audioSource.PlayOneShot(buttonSelect);
     }
 }

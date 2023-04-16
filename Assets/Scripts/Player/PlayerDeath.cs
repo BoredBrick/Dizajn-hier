@@ -4,7 +4,7 @@ public class PlayerDeath : MonoBehaviour
 {
     private readonly int deathHeight = -100;
     private readonly Vector3 respawnPosition = new(0f, 0f, 0f);
-
+    [SerializeField] private GameObject deathScreen;
 
     void Update()
     {
@@ -17,6 +17,8 @@ public class PlayerDeath : MonoBehaviour
             }
             else
             {
+                Time.timeScale = 0;
+                deathScreen.SetActive(true);
                 GameProperties.isEnd = true;
             }
         }

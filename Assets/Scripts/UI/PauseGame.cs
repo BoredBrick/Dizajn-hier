@@ -15,6 +15,14 @@ public class PauseGame : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip buttonSelect;
 
+
+    private XMLHighscoreManager HighscoreManager;
+
+    private void Start()
+    {
+        HighscoreManager = GetComponent<XMLHighscoreManager>();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetButtonDown("StartButtonPause"))
@@ -45,6 +53,7 @@ public class PauseGame : MonoBehaviour
     {
         Time.timeScale = 1;
         GameProperties.isPaused = false;
+        HighscoreManager.SaveScores();
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 

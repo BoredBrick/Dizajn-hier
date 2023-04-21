@@ -11,9 +11,20 @@ public class PlayerDeath : MonoBehaviour
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private Image menuButtonImage;
     [SerializeField] private TMP_Text gameOverText;
+    [SerializeField] private GameObject controller;
+    private XMLHighscoreManager HighscoreManager;
 
-    void Update()
+    private void Start()
     {
+        HighscoreManager = controller.GetComponent<XMLHighscoreManager>();
+    }
+    private void Update()
+    {
+        if (GameProperties.isPaused)
+        {
+            return;
+        }
+
         if (transform.position.y >= deathHeight)
         {
             return;
@@ -28,6 +39,7 @@ public class PlayerDeath : MonoBehaviour
         {
             Time.timeScale = 0;
             deathScreen.SetActive(true);
+            HighscoreManager.AddScore(PlayerProperties.distance);
             SetToPlayerColors();
             GameProperties.isPaused = true;
             EventSystem.current.SetSelectedGameObject(menuButton);

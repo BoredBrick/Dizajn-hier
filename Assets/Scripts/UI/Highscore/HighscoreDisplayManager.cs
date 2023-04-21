@@ -4,12 +4,16 @@ using UnityEngine;
 public class HighscoreDisplayManager : MonoBehaviour
 {
     [SerializeField] private HighscoreDisplayRow[] highScoreDisplayArray;
+    [SerializeField] private GameObject controller;
     private List<int> score;
 
-    private void Awake()
+    private void OnEnable()
     {
-        score = GetComponent<XMLHighscoreManager>().HighScores;
+        var component = controller.GetComponent<XMLHighscoreManager>();
+        score = component.Highscores;
+        ShowScore();
     }
+
     public void ShowScore()
     {
         for (int i = 0; i < highScoreDisplayArray.Length; i++)

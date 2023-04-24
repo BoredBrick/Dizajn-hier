@@ -29,6 +29,7 @@ public class PlatformColor : MonoBehaviour
             if (PlayerProperties.playerColor.Equals(platformColor) && !PlayerProperties.playerColor.Equals(playerColor))
             {
                 StartCoroutine(WaitForX(10f));
+                collider.enabled = true;
             }
             else
             {
@@ -39,9 +40,7 @@ public class PlatformColor : MonoBehaviour
 
     IEnumerator WaitForX(float waitTime)
     {
-        Debug.Log("startedwait");
         yield return new WaitForSeconds(waitTime);
-        collider.enabled = true;
     }
    
     private void OnCollisionEnter2D(Collision2D collision)

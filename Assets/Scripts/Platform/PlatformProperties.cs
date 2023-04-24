@@ -23,7 +23,7 @@ public class PlatformProperties : MonoBehaviour
             if (rnd < chanceToBreak)
             {
                 spriteRenderer.sprite = brokenPlatform;
-                Color color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.8f);
+                Color color = new (spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.8f);
                 spriteRenderer.color = color;
             }          
         }      

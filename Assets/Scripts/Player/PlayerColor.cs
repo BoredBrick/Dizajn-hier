@@ -9,7 +9,7 @@ public class PlayerColor : MonoBehaviour
 
     void Start()
     {
-        this.renderer = GetComponent<Renderer>();
+        renderer = GetComponent<Renderer>();
         PlayerProperties.playerColor = renderer.material.color;
         originalColor = PlayerProperties.playerColor;
     }

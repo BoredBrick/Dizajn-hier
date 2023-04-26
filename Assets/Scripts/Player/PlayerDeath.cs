@@ -12,7 +12,7 @@ public class PlayerDeath : MonoBehaviour
         {
             if (PlayerProperties.playerLifes > 0)
             {
-                //respawnPosition = PlayerProperties.GetCheckpoint();  Pojde po refaktore
+                //respawnPosition = PlayerProperties.Checkpoint; 
                 PlayerProperties.playerLifes--;
                 transform.position = respawnPosition;
             }

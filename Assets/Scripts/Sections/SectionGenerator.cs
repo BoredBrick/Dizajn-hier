@@ -30,7 +30,7 @@ public class SectionGenerator : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerProperties.SetCheckpoint(transform.position);
+        PlayerProperties.Checkpoint = transform.position;
 
         if (!collision.CompareTag("Player"))
         {

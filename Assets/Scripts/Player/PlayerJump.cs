@@ -24,7 +24,6 @@ public class PlayerJump : MonoBehaviour
 
             if (Input.GetAxis("RTJump") > 0 && IsGrounded())
             {
-                Debug.Log("Grounded");
                 PlayerProperties.isStickActive = false;
 
                 PlayerProperties.speedForce = 100f;
@@ -46,12 +45,13 @@ public class PlayerJump : MonoBehaviour
         if (!touchedCeiling && Physics2D.Raycast(transform.position, -Vector2.up, distanceToGround + 0.1f))
         {
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ceiling"))

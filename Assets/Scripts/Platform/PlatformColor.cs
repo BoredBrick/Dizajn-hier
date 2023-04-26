@@ -26,7 +26,7 @@ public class PlatformColor : MonoBehaviour
         {
             CurrentPlayerColor = PlayerProperties.playerColor;
 
-            if (PlayerProperties.playerColor.Equals(platformColor) 
+            if (PlayerProperties.playerColor.Equals(platformColor)
                 && !PlayerProperties.playerColor.Equals(playerColor))
             {
                 StartCoroutine(WaitForX(10f));
@@ -43,7 +43,7 @@ public class PlatformColor : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
     }
-   
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         CheckCollision(collision.collider);
@@ -72,8 +72,7 @@ public class PlatformColor : MonoBehaviour
     private void CheckCollision(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player")
-            && PlayerProperties.playerColor.Equals(platformColor)
-            )
+            && PlayerProperties.playerColor.Equals(platformColor))
         {
             this.collider.enabled = true;
         }

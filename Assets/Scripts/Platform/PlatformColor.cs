@@ -1,11 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlatformColor : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] Color playerColor;
-    [SerializeField] Color platformColor;
-    [SerializeField] Color currentPlayerColor;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Color playerColor;
+    [SerializeField] private Color platformColor;
+    [SerializeField] private Color currentPlayerColor;
     private new SpriteRenderer renderer;
     private new Collider2D collider;
 
@@ -28,23 +29,24 @@ public class PlatformColor : MonoBehaviour
             if (PlayerProperties.playerColor.Equals(platformColor) 
                 && !PlayerProperties.playerColor.Equals(playerColor))
             {
-                collider.isTrigger = false;
+                StartCoroutine(WaitForX(10f));
+                collider.enabled = true;
             }
             else
             {
-                collider.isTrigger = true;
+                collider.enabled = false;
             }
         }
     }
 
+    IEnumerator WaitForX(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+    }
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
         CheckCollision(collision.collider);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        CheckCollision(other);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -73,11 +75,11 @@ public class PlatformColor : MonoBehaviour
             && PlayerProperties.playerColor.Equals(platformColor)
             )
         {
-            this.collider.isTrigger = false;
+            this.collider.enabled = true;
         }
         else if (!this.collider.isTrigger)
         {
-            this.collider.isTrigger = true;
+            this.collider.enabled = false;
         }
     }
 

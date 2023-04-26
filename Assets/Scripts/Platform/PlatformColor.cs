@@ -6,7 +6,7 @@ public class PlatformColor : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Color playerColor;
     [SerializeField] private Color platformColor;
-    [SerializeField] private Color currentPlayerColor;
+    private Color CurrentPlayerColor { get; set; }
     private new SpriteRenderer renderer;
     private new Collider2D collider;
 
@@ -16,15 +16,15 @@ public class PlatformColor : MonoBehaviour
         renderer.color = Colors.GetRandomColor();
         playerColor = player.GetComponent<SpriteRenderer>().color;
         platformColor = gameObject.GetComponent<SpriteRenderer>().color;
-        currentPlayerColor = PlayerProperties.playerColor;
+        CurrentPlayerColor = PlayerProperties.playerColor;
         collider = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
-        if (currentPlayerColor != PlayerProperties.playerColor)
+        if (CurrentPlayerColor != PlayerProperties.playerColor)
         {
-            currentPlayerColor = PlayerProperties.playerColor;
+            CurrentPlayerColor = PlayerProperties.playerColor;
 
             if (PlayerProperties.playerColor.Equals(platformColor) 
                 && !PlayerProperties.playerColor.Equals(playerColor))
@@ -82,8 +82,4 @@ public class PlatformColor : MonoBehaviour
             this.collider.enabled = false;
         }
     }
-
-    public Color getPlayerColor() { return currentPlayerColor; }
-
-    public Color getPlatformColor() { return platformColor; }
 }

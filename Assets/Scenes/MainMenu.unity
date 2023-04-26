@@ -259,11 +259,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125837742}
   m_CullTransparentMesh: 1
---- !u!4 &251277094 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4993120331246417488, guid: 5abfb6058b31cb244a131ed4d78f1dd6, type: 3}
+--- !u!1 &251277091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4993120331246417489, guid: 5abfb6058b31cb244a131ed4d78f1dd6, type: 3}
   m_PrefabInstance: {fileID: 1866273803}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &251277093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251277091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9ba0f057df4304e8a07fedd84a3b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &413152477
 GameObject:
   m_ObjectHideFlags: 0
@@ -4150,7 +4162,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 251277094}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2042207244

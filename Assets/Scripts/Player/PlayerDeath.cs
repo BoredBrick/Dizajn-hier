@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerDeath : MonoBehaviour
 {
     private readonly int deathHeight = -100;
-    private readonly Vector3 respawnPosition = new(0f, 0f, 0f);
+    private readonly Vector3 respawnPosition = new(0f, 10f, 0f);
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private Image menuButtonImage;

@@ -1,37 +1,31 @@
-using System.Collections;
 using UnityEngine;
 //TODO UPRATAT
 public class PlatformProperties : MonoBehaviour
 {
     [SerializeField] private bool isStickable = false;
-    [SerializeField] private bool isBrakeable = false;
+    [SerializeField] private bool isBreakable = false;
     [SerializeField] private bool isBroken = false;
     [SerializeField] private int chanceToBreak = 80;
     [SerializeField] private float timeToBreak = 1f;
     [SerializeField] private float timeToRespawn = 3f;
+    [SerializeField] private Sprite brokenPlatform;
 
     private int rnd;
 
     private void Start()
     {
-        if (isBrakeable)
+        if (isBreakable)
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
             rnd = Random.Range(0, 100);
 
             if (rnd < chanceToBreak)
             {
-                Color color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.3f);
+                spriteRenderer.sprite = brokenPlatform;
+                Color color = new(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.8f);
                 spriteRenderer.color = color;
             }
-            /*
-             * Dobuducna na nastavenie ineho spritu pre oneTouch plosinu
-
-            if (rnd < oneTouchChance)
-                spriteRenderer.sprite = 
-            */
-
-        }      
+        }
     }
 
     private void Update()
@@ -52,7 +46,7 @@ public class PlatformProperties : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && isBrakeable && rnd < chanceToBreak)
+        if (collision.gameObject.CompareTag("Player") && isBreakable && rnd < chanceToBreak)
         {
             isBroken = true;
         }
@@ -60,7 +54,6 @@ public class PlatformProperties : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && this.isStickable)
         {
             PlayerProperties.isStickActive = true;
-            Debug.Log("Stick activated");
         }
     }
 
@@ -69,28 +62,26 @@ public class PlatformProperties : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && this.isStickable)
         {
             PlayerProperties.isStickActive = false;
-            Debug.Log("Stick deactivated");
         }
     }
 
     private void BreakPlatform()
     {
-        this.gameObject.SetActive(false);
-        Debug.Log("Zlomena");
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponent<Collider2D>().enabled = false;
 
         if (timeToRespawn >= 0)
         {
             timeToRespawn -= Time.deltaTime;
-            Debug.Log("Time: " + timeToRespawn);
         }
 
         if (timeToRespawn <= 0)
         {
-            this.gameObject.SetActive(true);
+            this.GetComponent<SpriteRenderer>().enabled = true;
+            this.GetComponent<Collider2D>().enabled = true;
             timeToBreak = 1f;
             timeToRespawn = 3f;
             isBroken = false;
-            Debug.Log("Opravena");
         }
     }
 }

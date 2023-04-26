@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(MainMenuManager))]
@@ -135,7 +136,7 @@ public class MainMenuEditor : Editor
         m_TabsSelected = GUILayout.Toolbar(m_TabsSelected, m_Tabs);
         EditorGUILayout.EndHorizontal();
 
-        if(m_TabsSelected >= 0 || m_TabsSelected < m_Tabs.Length)
+        if (m_TabsSelected >= 0 || m_TabsSelected < m_Tabs.Length)
         {
             switch (m_Tabs[m_TabsSelected])
             {

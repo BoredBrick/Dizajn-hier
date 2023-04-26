@@ -44,15 +44,13 @@ public class PauseGame : MonoBehaviour
 
     public void Unpause()
     {
-        Time.timeScale = 1;
         pauseScreen.SetActive(false);
         GameProperties.isPaused = false;
+        Time.timeScale = 1;
     }
 
     public void ReturnToMainMenu()
     {
-        Time.timeScale = 1;
-        GameProperties.isPaused = false;
         HighscoreManager.SaveScores();
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }

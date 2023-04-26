@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlatformColor : MonoBehaviour
@@ -5,7 +6,7 @@ public class PlatformColor : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Color playerColor;
     [SerializeField] private Color platformColor;
-    [SerializeField] private Color currentPlayerColor;
+    private Color CurrentPlayerColor { get; set; }
     private new SpriteRenderer renderer;
     private new Collider2D collider;
 
@@ -15,25 +16,32 @@ public class PlatformColor : MonoBehaviour
         renderer.color = Colors.GetRandomColor();
         playerColor = player.GetComponent<SpriteRenderer>().color;
         platformColor = gameObject.GetComponent<SpriteRenderer>().color;
-        currentPlayerColor = PlayerProperties.playerColor;
+        CurrentPlayerColor = PlayerProperties.playerColor;
         collider = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
-        if (currentPlayerColor != PlayerProperties.playerColor)
+        if (CurrentPlayerColor != PlayerProperties.playerColor)
         {
-            currentPlayerColor = PlayerProperties.playerColor;
+            CurrentPlayerColor = PlayerProperties.playerColor;
 
-            if (PlayerProperties.playerColor.Equals(platformColor) && !PlayerProperties.playerColor.Equals(playerColor))
+            if (PlayerProperties.playerColor.Equals(platformColor)
+                && !PlayerProperties.playerColor.Equals(playerColor))
             {
-                collider.isTrigger = false;
+                StartCoroutine(WaitForX(10f));
+                collider.enabled = true;
             }
             else
             {
-                collider.isTrigger = true;
+                collider.enabled = false;
             }
         }
+    }
+
+    IEnumerator WaitForX(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,7 +49,22 @@ public class PlatformColor : MonoBehaviour
         CheckCollision(collision.collider);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        CheckCollision(collision.collider);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        CheckCollision(other);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        CheckCollision(collision.collider);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
     {
         CheckCollision(other);
     }
@@ -49,14 +72,13 @@ public class PlatformColor : MonoBehaviour
     private void CheckCollision(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player")
-            && PlayerProperties.playerColor.Equals(platformColor)
-            && !PlayerProperties.playerColor.Equals(playerColor))
+            && PlayerProperties.playerColor.Equals(platformColor))
         {
-            this.collider.isTrigger = false;
+            this.collider.enabled = true;
         }
         else if (!this.collider.isTrigger)
         {
-            this.collider.isTrigger = true;
+            this.collider.enabled = false;
         }
     }
 }

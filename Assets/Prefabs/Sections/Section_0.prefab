@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7434945314767880084}
   - component: {fileID: 6015825076118000386}
+  - component: {fileID: 8760420529955348245}
   m_Layer: 0
   m_Name: Section_0
   m_TagString: Untagged
@@ -133,6 +134,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endsOnLvl: 0
+--- !u!114 &8760420529955348245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7434945314767880085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0140dd3efeca9824fa08b8595d4d66e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kvapel_Top: {fileID: 3768603699702725791, guid: d0be6ff3ce00d7c40b7f051bebe01413, type: 3}
+  kvapel_Bott: {fileID: 4284835290988021362, guid: b7e7a702ec4e5214a8affe516b9aad2f, type: 3}
+  pos_Gr1: {fileID: 7434945314309602419}
+  pos_Gr2: {fileID: 7434945314309602419}
+  pos_Celing: {fileID: 1465878636219999865}
 --- !u!1001 &838570496255366121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,6 +298,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7434945314767880084}
     m_Modifications:
+    - target: {fileID: 8236804422132100012, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236804422132100012, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8236804422132100017, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
       propertyPath: m_Name
       value: Ceiling
@@ -335,6 +361,14 @@ PrefabInstance:
     - target: {fileID: 8236804422132100018, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236804422132100019, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236804422132100019, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}

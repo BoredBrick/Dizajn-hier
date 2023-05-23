@@ -84,4 +84,5 @@ public class SectionGenerator : MonoBehaviour
     {
         this.lastSectionPosition = lastSection;
     }
+    public int Lvl { get;}
 }

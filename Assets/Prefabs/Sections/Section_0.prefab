@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6447962875616079694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -125, y: 34.4803, z: 1}
+  m_LocalPosition: {x: -125, y: 34.4803, z: 0}
   m_LocalScale: {x: 50, y: 60, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endsOnLvl: 0
+  water: {fileID: 1498033820911346558, guid: f1db507e872ecd44c8c8f813726aae6d, type: 3}
 --- !u!1001 &838570496255366121
 PrefabInstance:
   m_ObjectHideFlags: 0

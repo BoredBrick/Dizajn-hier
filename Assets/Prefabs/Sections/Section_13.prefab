@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endsOnLvl: 2
+  water: {fileID: 1498033820911346558, guid: f1db507e872ecd44c8c8f813726aae6d, type: 3}
 --- !u!1001 &1422934353984417977
 PrefabInstance:
   m_ObjectHideFlags: 0

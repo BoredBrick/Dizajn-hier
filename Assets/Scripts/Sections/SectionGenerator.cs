@@ -11,6 +11,7 @@ public class SectionGenerator : MonoBehaviour
     private int section = 1;
     private int lvl = 0;
     private SectionBank localBank;
+    private char poolType = 'e';
 
     [SerializeField] List<GameObject> sectionsPool;
 
@@ -19,14 +20,20 @@ public class SectionGenerator : MonoBehaviour
         newPosition = lastSectionPosition.position;
         localBank = bank.GetComponent<SectionBank>();
         sectionsPool = localBank.GetSectionsEasy();
+
     }
     private void Update()
     {
-        if (PlayerProperties.distance == 500)
+        if (PlayerProperties.distance == 200 && poolType == 'e')
+        {
+            poolType = 'm';
             sectionsPool.AddRange(localBank.GetSectionsMedium());
-        else if (PlayerProperties.distance == 1500)
+        }            
+        else if (PlayerProperties.distance == 400 && poolType == 'm')
+        {
+            poolType = 'h';
             sectionsPool.AddRange(localBank.GetSectionsHard());
-
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

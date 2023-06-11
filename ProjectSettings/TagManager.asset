@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - PlayerTrigger
   - Ceiling
+  - Enemy
   layers:
   - Default
   - TransparentFX

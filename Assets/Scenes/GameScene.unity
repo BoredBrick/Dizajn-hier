@@ -1593,10 +1593,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 183075323540801948, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 213410017386041070, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1826544683}
+    - target: {fileID: 1135530324011000588, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 6349047311117262076, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+    - target: {fileID: 2281940040385162086, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497104741865815346, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2514386468281755347, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4859820583393928078, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
       propertyPath: lastSection
       value: 
       objectReference: {fileID: 463257808}
+    - target: {fileID: 6509624401668915613, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7434945314767880084, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1957,6 +1985,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6349047311117262072, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349047311906835381, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6349047311906835381, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: far clip plane
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 1022268635015034082, guid: 5b7f6c3f7dc9519478c5c2c2412b8728, type: 3}
       propertyPath: m_Name
       value: SectionGenerator
@@ -2012,18 +2052,6 @@ PrefabInstance:
     - target: {fileID: 8720358267262642563, guid: 5b7f6c3f7dc9519478c5c2c2412b8728, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6349047311117262072, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6349047311906835381, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6349047311906835381, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
-      propertyPath: far clip plane
-      value: 100000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}

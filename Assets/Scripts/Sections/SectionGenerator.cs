@@ -1,38 +1,44 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SectionGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject bank;
+    [SerializeField] private SectionBank bank;
     [SerializeField] private Transform lastSectionPosition;
-    [SerializeField] private GameObject nextSectionsTrigger;
+    [SerializeField] private List<GameObject> sectionsPool;
 
     private Vector3 newPosition;
-    private int section = 1;
-    private int lvl = 0;
-    private SectionBank localBank;
-    private char poolType = 'e';
-
-    [SerializeField] List<GameObject> sectionsPool;
+    private int section = 1, lvl = 0;  
+    public static int 
+        breakPoint1 = 200,  
+        breakPoint2 = 400, 
+        breakPoint3 = 800;
 
     private void Start()
     {
+        sectionsPool = new List<GameObject>();
         newPosition = lastSectionPosition.position;
-        localBank = bank.GetComponent<SectionBank>();
-        sectionsPool = localBank.GetSectionsEasy();
 
-    }
-    private void Update()
-    {
-        if (PlayerProperties.distance == 200 && poolType == 'e')
+        if (PlayerProperties.distance <= breakPoint1)
         {
-            poolType = 'm';
-            sectionsPool.AddRange(localBank.GetSectionsMedium());
-        }            
-        else if (PlayerProperties.distance == 400 && poolType == 'm')
+            sectionsPool.AddRange(bank.GetSectionsEasy());
+        }
+        else if (PlayerProperties.distance > breakPoint1 && PlayerProperties.distance <= breakPoint2)
         {
-            poolType = 'h';
-            sectionsPool.AddRange(localBank.GetSectionsHard());
+            sectionsPool.AddRange(bank.GetSectionsEasy());
+            sectionsPool.AddRange(bank.GetSectionsMedium());
+        }
+        else if (PlayerProperties.distance > breakPoint2 && PlayerProperties.distance <= breakPoint3)
+        {
+            sectionsPool.AddRange(bank.GetSectionsEasy());
+            sectionsPool.AddRange(bank.GetSectionsMedium());
+            sectionsPool.AddRange(bank.GetSectionsHard());
+        }
+        else if (PlayerProperties.distance > breakPoint3)
+        {
+            sectionsPool.AddRange(bank.GetSectionsMedium());
+            sectionsPool.AddRange(bank.GetSectionsHard());
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,14 +46,11 @@ public class SectionGenerator : MonoBehaviour
         PlayerProperties.Checkpoint = transform.position;
 
         if (!collision.CompareTag("Player"))
-        {
             return;
-        }
 
         if (lastSectionPosition.GetComponent<Section>().GetEndsOnLvl() > 0)
-        {
             lvl += 100 * lastSectionPosition.GetComponent<Section>().GetEndsOnLvl();
-        }
+
         GameObject nextSectionGenerator = null;
         for (int i = 0; i <= 5; i++)
         {
@@ -57,8 +60,10 @@ public class SectionGenerator : MonoBehaviour
             Transform tr = Instantiate(nextSection, newPosition, Quaternion.identity).transform;
 
             if (i == 3)
-                nextSectionGenerator = Instantiate(nextSectionsTrigger,
+            {
+                nextSectionGenerator = Instantiate(this.gameObject,
                     newPosition + new Vector3(-150, 30, 0), Quaternion.identity);
+            }                
 
             IncreaseLvl(nextSection);
             section++;
@@ -82,14 +87,12 @@ public class SectionGenerator : MonoBehaviour
 
         Section section = nextSection.GetComponent<Section>();
         if (lvlAdjustments.TryGetValue(section.GetEndsOnLvl(), out int adjustment))
-        {
             lvl += adjustment;
-        }
     }
 
     public void SetLastSectionPosition(Transform lastSection)
     {
         this.lastSectionPosition = lastSection;
     }
-    public int Lvl { get;}
+    public static int Lvl { get;}
 }

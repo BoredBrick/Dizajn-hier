@@ -1633,6 +1633,14 @@ PrefabInstance:
       propertyPath: remainingForceTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3130621763968082383, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1826544683}
+    - target: {fileID: 3809490218252142052, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4859820583393928078, guid: afa280343349f824aa9c2e3c5ea7f14b, type: 3}
       propertyPath: lastSection
       value: 

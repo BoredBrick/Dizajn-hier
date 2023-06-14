@@ -16,7 +16,7 @@ public class Background : MonoBehaviour
         float distanceY = camera.transform.position.y;
         transform.position = new Vector3(
             transform.position.x,
-            startPosY + (distanceY / 0.8f), 
+            startPosY + (distanceY / 0.995f), 
             transform.position.z);
     }
 }

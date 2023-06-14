@@ -289,6 +289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerrainCeil
       objectReference: {fileID: 0}
+    - target: {fileID: 5012924343435953193, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
+      propertyPath: m_TagString
+      value: Ceiling
+      objectReference: {fileID: 0}
     - target: {fileID: 5125425850790970672, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
       propertyPath: m_Offset.x
       value: 25

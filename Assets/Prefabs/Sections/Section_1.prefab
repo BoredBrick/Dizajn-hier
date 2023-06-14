@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cel
       objectReference: {fileID: 0}
+    - target: {fileID: 5012924343435953193, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
+      propertyPath: m_TagString
+      value: Ceiling
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
 --- !u!224 &8487958405232179828 stripped

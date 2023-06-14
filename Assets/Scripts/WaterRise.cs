@@ -1,34 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class WaterRise : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    [SerializeField] float waterSpeed = 5f;
-    float waterX, waterY = -200;
-    public static Vector3 waterPos;
+    [SerializeField] float defaultSpeed = 5f, diff;
+    float speed1, speed2, speed3, speed4, speed5;
+    private static Vector3 waterPos;
+    public static Vector3 WaterPos { get { return waterPos; } }
 
-    private void Start()
+    void Start()
     {
-        waterSpeed /= 300;
+        waterPos = transform.position;
+        speed1 = defaultSpeed / 300;
+        speed2 = defaultSpeed / 125;
+        speed3 = defaultSpeed / 25;
+        speed4 = defaultSpeed / 5;
+        speed5 = defaultSpeed;
     }
 
     void Update()
     {
-        if (PlayerProperties.distance == SectionGenerator.breakPoint1 || 
-            PlayerProperties.distance == SectionGenerator.breakPoint2 || 
-            PlayerProperties.distance == SectionGenerator.breakPoint3)
-            RiseWatterSpeed(waterSpeed);
+        float
+            waterX = player.transform.position.x,
+            waterY = transform.position.y,
+            speed;
+            
+        diff = player.transform.position.y - waterY;
 
-        waterX = player.transform.position.x;
-        waterY = waterY + waterSpeed;
-        transform.position = new Vector2(waterX, waterY);
+        if (diff < 200)
+            speed = speed1;
+        else if (diff >= 200 && diff < 400)
+            speed = speed2;
+        else if (diff >= 400 && diff < 600)
+            speed = speed3;
+        else if (diff >= 600 && diff < 800)
+            speed = speed4;
+        else
+            speed = speed5;
+
+        transform.position = new Vector2(waterX, waterY += speed);
         waterPos = transform.position;
-    }
-    public float RiseWatterSpeed(float speed)
-    {
-        return speed * 2;
     }
 }

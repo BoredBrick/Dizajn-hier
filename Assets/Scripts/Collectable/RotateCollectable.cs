@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RotateGem : MonoBehaviour
+public class RotateCollectable : MonoBehaviour
 {
     [SerializeField] private float speed = 20;
     private Vector3 rotation;

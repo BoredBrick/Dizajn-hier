@@ -7,7 +7,7 @@ public class WaterRise : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] float waterSpeed = 5f;
-    float waterX, waterY = -120;
+    float waterX, waterY = -200;
     public static Vector3 waterPos;
 
     private void Start()

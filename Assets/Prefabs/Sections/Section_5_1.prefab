@@ -443,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4027097695590213601, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 4027097695590213601, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -464,6 +464,18 @@ PrefabInstance:
     - target: {fileID: 5012924343435953193, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
       propertyPath: m_Name
       value: Cel_Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125425850790970672, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
+      propertyPath: m_Size.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125425850790970672, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978368303886137041, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
+      propertyPath: m_Size.x
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7799b8e2714f062498d01cd79b285e85, type: 3}
@@ -721,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6572432617412269212, guid: c7d6e4f9486df9a429b1831a4c923bcb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 80
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 6572432617412269212, guid: c7d6e4f9486df9a429b1831a4c923bcb, type: 3}
       propertyPath: m_LocalPosition.z

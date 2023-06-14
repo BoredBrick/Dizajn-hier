@@ -3,8 +3,8 @@ using UnityEngine;
 public static class PlayerProperties
 {
     public static float speedForce = 80f;
-    public static float jumpForce = 100f;
-    public static float gravityForce = 100f;
+    public static float jumpForce = 150f;
+    public static float gravityForce = 300f;
     public static Color playerColor;
     public static bool isStickActive = false;
     public static float remainingStickTime = 80f;

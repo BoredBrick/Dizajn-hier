@@ -6,14 +6,17 @@ public class Background : MonoBehaviour
     [SerializeField] GameObject camera;
     void Start()
     {
-        startPosX = transform.position.x;
+        //startPosX = transform.position.x;
         startPosY = transform.position.y;
     }
 
     void Update()
     {
-        float distanceX = camera.transform.position.x;
+        //float distanceX = camera.transform.position.x;
         float distanceY = camera.transform.position.y;
-        transform.position = new Vector3(startPosX + (distanceX / 1.1f), startPosY + (distanceY / 0.8f), transform.position.z);
+        transform.position = new Vector3(
+            transform.position.x,
+            startPosY + (distanceY / 0.8f), 
+            transform.position.z);
     }
 }

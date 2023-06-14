@@ -2,13 +2,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static SpawnCollectable;
 
-public class Collector : MonoBehaviour
+public class PlayerCollector : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Collectable"))
+        if (other.CompareTag("Collectable"))
         {
-            switch (collision.gameObject.GetComponent<SpawnCollectable>().Type)
+            switch (other.GetComponent<SpawnCollectable>().Type)
             {
                 case CollectableType.gem:
                     PlayerProperties.playerGems++;
@@ -20,7 +20,7 @@ public class Collector : MonoBehaviour
                     Debug.Log("Nieco ine");
                     break;
             }
-            collision.gameObject.SetActive(false);
+            other.gameObject.SetActive(false);
         }
     }
 }

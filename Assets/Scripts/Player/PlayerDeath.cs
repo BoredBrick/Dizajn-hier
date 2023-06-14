@@ -3,8 +3,7 @@ using UnityEngine;
 public class PlayerDeath : MonoBehaviour
 {
     private readonly int deathHeight = -100;
-    private static readonly Vector3 respawnPosition = new(0f, 10f, 0f);
-
+    private Vector3 respawnPosition = new(0f, 10f, 0f);
 
     void Update()
     {
@@ -12,7 +11,7 @@ public class PlayerDeath : MonoBehaviour
         {
             if (PlayerProperties.playerLifes > 0)
             {
-                //respawnPosition = PlayerProperties.Checkpoint; 
+                respawnPosition = PlayerProperties.Checkpoint; 
                 PlayerProperties.playerLifes--;
                 transform.position = respawnPosition;
             }

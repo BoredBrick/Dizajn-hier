@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class PlayerDeath : MonoBehaviour
 {
     private readonly int deathHeight = -100;
-    private readonly Vector3 respawnPosition = new(0f, 0f, 0f);
+    private readonly Vector3 respawnPosition = new(0f, 10f, 0f);
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private Image menuButtonImage;
+    [SerializeField] private Image newGameButtonImage;
     [SerializeField] private TMP_Text gameOverText;
+    [SerializeField] private TMP_Text scoreText;
     [SerializeField] private GameObject controller;
     private XMLHighscoreManager HighscoreManager;
 
@@ -30,7 +32,7 @@ public class PlayerDeath : MonoBehaviour
             return;
         }
 
-        if (PlayerProperties.playerLifes > 3)
+        if (PlayerProperties.playerLifes > 0)
         {
             PlayerProperties.playerLifes--;
             transform.position = respawnPosition;
@@ -39,7 +41,8 @@ public class PlayerDeath : MonoBehaviour
         {
             Time.timeScale = 0;
             deathScreen.SetActive(true);
-            HighscoreManager.AddScore(PlayerProperties.distance);
+            HighscoreManager.AddScore(PlayerProperties.score);
+            scoreText.text = "Score: " + PlayerProperties.score.ToString();
             SetToPlayerColors();
             GameProperties.isPaused = true;
             EventSystem.current.SetSelectedGameObject(menuButton);
@@ -49,6 +52,7 @@ public class PlayerDeath : MonoBehaviour
     {
         Color color = PlayerProperties.playerColor;
         menuButtonImage.color = color;
+        newGameButtonImage.color = color;
         gameOverText.color = color;
     }
 }

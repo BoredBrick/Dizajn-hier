@@ -55,6 +55,16 @@ public class PauseGame : MonoBehaviour
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
     }
 
+    public void ReturnToMainMenuWithoutSaving()
+    {
+        SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+    }
+
+    public void NewGame()
+    {
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+    }
+
     private void SetToPlayerColors()
     {
         Color color = PlayerProperties.playerColor;

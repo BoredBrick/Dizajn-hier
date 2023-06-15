@@ -1,3 +1,8 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 public class PlayerDeath : MonoBehaviour
 {
     private readonly int deathHeight = -100;

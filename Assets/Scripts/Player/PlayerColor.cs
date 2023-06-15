@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerColor : MonoBehaviour
 {
     private Color originalColor = Color.white;

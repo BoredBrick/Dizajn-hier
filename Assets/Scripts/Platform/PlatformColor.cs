@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlatformColor : MonoBehaviour
 {
     [SerializeField] private GameObject player;

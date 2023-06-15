@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class DisableCursor : MonoBehaviour
 {
     void Start()

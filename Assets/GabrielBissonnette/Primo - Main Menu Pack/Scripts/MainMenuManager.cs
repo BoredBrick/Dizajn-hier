@@ -1,10 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
 public class MainMenuManager : MonoBehaviour
 {
     #region Variables
@@ -249,7 +242,7 @@ public class MainMenuManager : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-                 Application.Quit();
+        Application.Quit();
 #endif
     }
     #endregion

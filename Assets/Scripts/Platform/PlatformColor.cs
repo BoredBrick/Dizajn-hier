@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class PlatformColor : MonoBehaviour
 {
     [SerializeField] private GameObject player;
@@ -13,26 +11,29 @@ public class PlatformColor : MonoBehaviour
     {
         renderer = GetComponent<SpriteRenderer>();
         renderer.color = Colors.GetRandomColor();
-        playerColor = player.GetComponent<SpriteRenderer>().color;
         platformColor = gameObject.GetComponent<SpriteRenderer>().color;
-        currentPlayerColor = PlayerProperties.playerColor;
         collider = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
-        if (currentPlayerColor != PlayerProperties.playerColor)
+        if ((PlayerProperties.playerColor == PlayerProperties.displayedColor)
+            && PlayerProperties.playerColor == platformColor)
         {
-            currentPlayerColor = PlayerProperties.playerColor;
+            collider.enabled = true;
+            return;
+        }
 
-            if (PlayerProperties.playerColor.Equals(platformColor) && !PlayerProperties.playerColor.Equals(playerColor))
-            {
-                collider.isTrigger = false;
-            }
-            else
-            {
-                collider.isTrigger = true;
-            }
+        if (PlayerProperties.playerColor != platformColor)
+        {
+            collider.enabled = false;
+            return;
+        }
+
+        if (PlayerProperties.playerColor != PlayerProperties.displayedColor)
+        {
+            collider.enabled = true;
+
         }
     }
 
@@ -41,7 +42,22 @@ public class PlatformColor : MonoBehaviour
         CheckCollision(collision.collider);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        CheckCollision(collision.collider);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        CheckCollision(other);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        CheckCollision(collision.collider);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
     {
         CheckCollision(other);
     }
@@ -49,14 +65,13 @@ public class PlatformColor : MonoBehaviour
     private void CheckCollision(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Player")
-            && PlayerProperties.playerColor.Equals(platformColor)
-            && !PlayerProperties.playerColor.Equals(playerColor))
+            && PlayerProperties.playerColor.Equals(platformColor))
         {
-            this.collider.isTrigger = false;
+            this.collider.enabled = true;
         }
         else if (!this.collider.isTrigger)
         {
-            this.collider.isTrigger = true;
+            this.collider.enabled = false;
         }
     }
 }

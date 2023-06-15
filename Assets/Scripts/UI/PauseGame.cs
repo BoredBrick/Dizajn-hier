@@ -1,9 +1,3 @@
-using TMPro;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
 public class PauseGame : MonoBehaviour
 {
     [SerializeField] private GameObject pauseScreen;

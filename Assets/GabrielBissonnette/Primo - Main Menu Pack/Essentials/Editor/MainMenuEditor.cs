@@ -1,4 +1,7 @@
-﻿[CustomEditor(typeof(MainMenuManager))]
+﻿using UnityEditor;
+using UnityEngine;
+
+[CustomEditor(typeof(MainMenuManager))]
 public class MainMenuEditor : Editor
 {
     #region SerializedProperty

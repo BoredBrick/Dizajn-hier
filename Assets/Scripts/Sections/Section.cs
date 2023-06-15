@@ -9,7 +9,7 @@ public class Section : MonoBehaviour
 
     private void Update()
     {
-        if (WaterRise.WaterPos.y > transform.position.y)
+        if (WaterRise.WaterPos.y > transform.position.y + 100)
             Destroy(gameObject);
     }
 }

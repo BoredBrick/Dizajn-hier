@@ -11,9 +11,9 @@ public class SectionGenerator : MonoBehaviour
     private Vector3 newPosition;
     private int section = 1, lvl = 0;  
     public static int 
-        breakPoint1 = 200,  
-        breakPoint2 = 400, 
-        breakPoint3 = 800;
+        breakPoint1 = 100,  
+        breakPoint2 = 200, 
+        breakPoint3 = 300;
 
     private void Start()
     {

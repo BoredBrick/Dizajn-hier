@@ -20,7 +20,7 @@ public class PlayerDeath : MonoBehaviour
                 GameProperties.isEnd = true;
             }
         }
-        else if (WaterRise.WaterPos.y > transform.position.y - 100) 
+        else if (WaterRise.WaterPos.y > transform.position.y - 80) 
         {
             GameProperties.isEnd = true;
         }

@@ -840,7 +840,7 @@ PrefabInstance:
       objectReference: {fileID: 5856628866919060057}
     - target: {fileID: 2394194079642252776, guid: 8fca382422bea314a8800f3a0de69c34, type: 3}
       propertyPath: speed
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2394194079642252776, guid: 8fca382422bea314a8800f3a0de69c34, type: 3}
       propertyPath: borders

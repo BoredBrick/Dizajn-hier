@@ -2,21 +2,19 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    private float startPosX, startPosY;
+    private float startPosY;
     [SerializeField] GameObject camera;
-    void Start()
+    void Awake()
     {
-        //startPosX = transform.position.x;
         startPosY = transform.position.y;
     }
 
     void Update()
     {
-        //float distanceX = camera.transform.position.x;
-        float distanceY = camera.transform.position.y;
+        float distanceY = camera.transform.position.y-45;
         transform.position = new Vector3(
             transform.position.x,
-            startPosY + (distanceY / 0.995f), 
+            startPosY + (distanceY / 0.99995f), 
             transform.position.z);
     }
 }

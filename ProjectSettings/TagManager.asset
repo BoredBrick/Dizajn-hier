@@ -9,6 +9,8 @@ TagManager:
   - PlayerTrigger
   - Ceiling
   - Enemy
+  - RockRenderer
+  - Rock
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ public class PlayerJump : MonoBehaviour
         {
             PlayerProperties.speedForce = 120f;
 
-            if (Input.GetAxis("RTJump") > 0 && IsGrounded())
+            if ((Input.GetAxis("RTJump") > 0 || Input.GetKey(KeyCode.Space)) && IsGrounded())
             {
                 PlayerProperties.isStickActive = false;
 

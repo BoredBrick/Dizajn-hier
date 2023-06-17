@@ -62,6 +62,7 @@ public class PauseGame : MonoBehaviour
 
     public void NewGame()
     {
+        HighscoreManager.SaveScores();
         SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
 

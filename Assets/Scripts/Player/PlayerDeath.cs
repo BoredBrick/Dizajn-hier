@@ -8,6 +8,7 @@ public class PlayerDeath : MonoBehaviour
     private readonly int deathHeight = -100;
     private readonly Vector3 respawnPosition = new(0f, 10f, 0f);
     [SerializeField] private GameObject menuButton;
+    [SerializeField] private GameObject newGameButton;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private Image menuButtonImage;
     [SerializeField] private Image newGameButtonImage;
@@ -45,7 +46,7 @@ public class PlayerDeath : MonoBehaviour
             scoreText.text = "Score: " + PlayerProperties.score.ToString();
             SetToPlayerColors();
             GameProperties.isPaused = true;
-            EventSystem.current.SetSelectedGameObject(menuButton);
+            EventSystem.current.SetSelectedGameObject(newGameButton);
         }
     }
     private void SetToPlayerColors()

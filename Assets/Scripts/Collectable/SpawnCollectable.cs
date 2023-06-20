@@ -3,31 +3,26 @@ using UnityEngine;
 public class SpawnCollectable : MonoBehaviour
 {
     public enum CollectableType { gem, life, boost };
-    private CollectableType type;
-    public CollectableType Type
-    {
-        get { return type; }
-        set { type = value; }
-    }
+    public CollectableType Type { get; set; }
 
     void Start()
     {
-        int rnd = Random.Range(0, 100);
+        int rnd = RandomNumberGenerator.GetRandomInt();
 
         if (rnd <= 5)
         {
             transform.Find("Life").gameObject.SetActive(true);
-            type = CollectableType.life;            
-        }            
-        else if (rnd >5 && rnd <= 45)
+            Type = CollectableType.life;
+        }
+        else if (rnd <= 45)
         {
             transform.Find("QueMark").gameObject.SetActive(true);
-            type = CollectableType.boost;
+            Type = CollectableType.boost;
         }
-        else if (rnd > 45 && rnd <= 100)
+        else
         {
             transform.Find("Gem").gameObject.SetActive(true);
-            type = CollectableType.gem;
-        } 
+            Type = CollectableType.gem;
+        }
     }
 }

@@ -5,12 +5,11 @@ public class WaterRise : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] float defaultSpeed = 5f, diff;
     float speed1, speed2, speed3, speed4, speed5;
-    private static Vector3 waterPos;
-    public static Vector3 WaterPos { get { return waterPos; } }
+    public static Vector3 WaterPos { get; set; }
 
     void Start()
     {
-        waterPos = transform.position;
+        WaterPos = transform.position;
         speed1 = defaultSpeed / 300;
         speed2 = defaultSpeed / 125;
         speed3 = defaultSpeed / 25;
@@ -20,12 +19,10 @@ public class WaterRise : MonoBehaviour
 
     void Update()
     {
-        float
-            waterX = player.transform.position.x,
-            waterY = transform.position.y,
-            speed;
-            
-        diff = player.transform.position.y - waterY;
+        float waterX = player.transform.position.x;
+        float waterY = transform.position.y;
+        float diff = player.transform.position.y - waterY;
+        float speed;
 
         if (diff < 200)
             speed = speed1;
@@ -39,6 +36,6 @@ public class WaterRise : MonoBehaviour
             speed = speed5;
 
         transform.position = new Vector2(waterX, waterY += speed);
-        waterPos = transform.position;
+        WaterPos = transform.position;
     }
 }

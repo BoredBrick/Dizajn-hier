@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SectionGenerator : MonoBehaviour
@@ -9,10 +8,10 @@ public class SectionGenerator : MonoBehaviour
     [SerializeField] private List<GameObject> sectionsPool;
 
     private Vector3 newPosition;
-    private int section = 1, lvl = 0;  
-    public static int 
-        breakPoint1 = 100,  
-        breakPoint2 = 200, 
+    private int section = 1, lvl = 0;
+    public static int
+        breakPoint1 = 100,
+        breakPoint2 = 200,
         breakPoint3 = 300;
 
     private void Start()
@@ -61,9 +60,9 @@ public class SectionGenerator : MonoBehaviour
 
             if (i == 3)
             {
-                nextSectionGenerator = Instantiate(this.gameObject,
+                nextSectionGenerator = Instantiate(gameObject,
                     newPosition + new Vector3(-150, 30, 0), Quaternion.identity);
-            }                
+            }
 
             IncreaseLvl(nextSection);
             section++;
@@ -92,7 +91,7 @@ public class SectionGenerator : MonoBehaviour
 
     public void SetLastSectionPosition(Transform lastSection)
     {
-        this.lastSectionPosition = lastSection;
+        lastSectionPosition = lastSection;
     }
-    public static int Lvl { get;}
+    public static int Lvl { get; }
 }

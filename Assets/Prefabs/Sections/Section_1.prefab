@@ -64,13 +64,8 @@ Transform:
   - {fileID: 7428136456261329734}
   - {fileID: 6135774665710423564}
   - {fileID: 1048272429626395106}
-  - {fileID: 2501148809407856292}
+  - {fileID: 356784923523746042}
   - {fileID: 448217678112045461}
-  - {fileID: 1650351796759827105}
-  - {fileID: 4500142666329712517}
-  - {fileID: 604691904950888352}
-  - {fileID: 7168510107216744176}
-  - {fileID: 9090926281116150816}
   - {fileID: 7661076971236173360}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -102,9 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kvapel_Top: {fileID: 3768603699702725791, guid: d0be6ff3ce00d7c40b7f051bebe01413, type: 3}
   kvapel_Bott: {fileID: 4284835290988021362, guid: b7e7a702ec4e5214a8affe516b9aad2f, type: 3}
-  pos_Gr1: {fileID: 4500142666329712517}
-  pos_Gr2: {fileID: 604691904950888352}
-  pos_Celing: {fileID: 1650351796759827105}
+  pos_Gr1: {fileID: 7428136456261329734}
+  pos_Gr2: {fileID: 6135774665710423564}
+  pos_Celing: {fileID: 356784923523746042}
 --- !u!1001 &862528098621201963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -422,10 +417,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 230727acf35e60b45ab96da26da32d75, type: 3}
---- !u!4 &2501148809407856292 stripped
+--- !u!4 &356784923523746042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1084203416164832977, guid: 230727acf35e60b45ab96da26da32d75, type: 3}
-  m_PrefabInstance: {fileID: 3296072888215431285}
+  m_PrefabInstance: {fileID: 862528098621201963}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5050827726669504671
 PrefabInstance:
@@ -618,18 +613,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3987667082287716233}
     m_Modifications:
-    - target: {fileID: 8236804422132100012, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8236804422132100012, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8236804422132100017, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
-      propertyPath: m_Name
-      value: Collectable
-      objectReference: {fileID: 0}
     - target: {fileID: 6572432617412269212, guid: c7d6e4f9486df9a429b1831a4c923bcb, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -673,6 +656,18 @@ PrefabInstance:
     - target: {fileID: 6572432617412269212, guid: c7d6e4f9486df9a429b1831a4c923bcb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236804422132100012, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236804422132100012, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236804422132100017, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
+      propertyPath: m_Name
+      value: Collectable
       objectReference: {fileID: 0}
     - target: {fileID: 8236804422132100019, guid: bd109aeedff33cb4690ba02ca54f4293, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x

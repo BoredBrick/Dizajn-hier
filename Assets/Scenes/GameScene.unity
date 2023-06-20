@@ -3712,7 +3712,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2116262145
 PrefabInstance:
@@ -3761,6 +3761,18 @@ PrefabInstance:
       propertyPath: newGameButtonImage
       value: 
       objectReference: {fileID: 1229623852}
+    - target: {fileID: 2105401236475368546, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: m_Intensity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105401236475368546, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105401236475368546, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 130
+      objectReference: {fileID: 0}
     - target: {fileID: 2318355480114454381, guid: 4f2833f344d03324da7705b9ba8002e5, type: 3}
       propertyPath: m_Enabled
       value: 1

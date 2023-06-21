@@ -7,7 +7,7 @@ public class SpawnCollectable : MonoBehaviour
 
     void Start()
     {
-        int rnd = Random.Range(0, 100);
+        int rnd = RandomNumberGenerator.GetRandomInt();
 
         if (rnd <= 5)
         {

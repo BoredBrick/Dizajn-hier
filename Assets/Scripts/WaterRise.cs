@@ -35,7 +35,7 @@ public class WaterRise : MonoBehaviour
         else
             speed = speed5;
 
-        transform.position = new Vector2(waterX, waterY += speed);
+        transform.position = new Vector3(waterX, waterY += speed, 20);
         WaterPos = transform.position;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+    public static bool isInDefaultPosition = true;
     public static bool isPlayerClose = false;
     private GameObject player;
     private GameObject mainCamera;
@@ -42,12 +43,12 @@ public class EnemyMove : MonoBehaviour
 
             if (this.gameObject.transform.localPosition.x <= (defaultPosition - travelDistance))
             {
-                transform.eulerAngles = new Vector3(0, 180, 90);
+                transform.eulerAngles = new Vector3(0, 180, 0);
             }
 
             if (this.gameObject.transform.localPosition.x >= (defaultPosition + travelDistance))
             {
-                transform.eulerAngles = new Vector3(0, 0, 90); 
+                transform.eulerAngles = new Vector3(0, 0, 0); 
             }
         }
         else
@@ -56,12 +57,14 @@ public class EnemyMove : MonoBehaviour
 
             if (Mathf.Round(this.gameObject.transform.eulerAngles.y) == 0 && player.GetComponent<Rigidbody2D>().position.x >= rb.position.x)
             {
-                transform.eulerAngles = new Vector3(0, 180, 90);
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                isInDefaultPosition = false;
             }
 
             if (Mathf.Round(this.gameObject.transform.eulerAngles.y) == 180 && player.GetComponent<Rigidbody2D>().position.x <= rb.position.x)
             {
-                transform.eulerAngles = new Vector3(0, 0, 90);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                isInDefaultPosition = true;
             }
         }
 

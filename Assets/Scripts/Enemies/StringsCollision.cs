@@ -46,12 +46,12 @@ public class StringsCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (PlayerProperties.playerColor == this.gameObject.GetComponent<SpriteRenderer>().color)
+            if (PlayerProperties.playerColor == this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().material.color)
             {
                 wasCorrectColor = true;
 
-                this.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-                this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+                this.gameObject.GetComponentInChildren<CircleCollider2D>().enabled = false;
             }
             else
             {

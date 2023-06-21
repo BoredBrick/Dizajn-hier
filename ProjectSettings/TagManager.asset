@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - RockRenderer
   - Rock
+  - Web
   layers:
   - Default
   - TransparentFX

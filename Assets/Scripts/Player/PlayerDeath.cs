@@ -28,19 +28,14 @@ public class PlayerDeath : MonoBehaviour
             return;
         }
 
-        if (transform.position.y >= deathHeight)
+        if (!HitTaken())
         {
             return;
         }
 
-        //else if (WaterRise.WaterPos.y > transform.position.y - 80)
-        //{
-        //    GameProperties.isEnd = true;
-        //}
-
-        if (PlayerProperties.playerLifes > 0)
+        if (PlayerProperties.lives > 0)
         {
-            PlayerProperties.playerLifes--;
+            PlayerProperties.lives--;
             transform.position = respawnPosition;
         }
         else
@@ -54,6 +49,21 @@ public class PlayerDeath : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(newGameButton);
         }
     }
+
+    private bool HitTaken()
+    {
+        if (transform.position.y < deathHeight)
+        {
+            return true;
+        }
+        else if (WaterRise.WaterPos.y > transform.position.y - 80)
+        {
+            PlayerProperties.lives = 0;
+            return true;
+        }
+        return false;
+    }
+
     private void SetToPlayerColors()
     {
         Color color = PlayerProperties.playerColor;

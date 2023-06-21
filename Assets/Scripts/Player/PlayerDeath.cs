@@ -46,6 +46,7 @@ public class PlayerDeath : MonoBehaviour
             scoreText.text = "Score: " + PlayerProperties.score.ToString();
             SetToPlayerColors();
             GameProperties.isPaused = true;
+            GameProperties.isEnded = true;
             EventSystem.current.SetSelectedGameObject(newGameButton);
         }
     }

@@ -7,5 +7,6 @@ public class ResetData : MonoBehaviour
         GameProperties.isPaused = false;
         Time.timeScale = 1;
         PlayerProperties.lives = 3;
+        GameProperties.isEnded = false;
     }
 }

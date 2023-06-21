@@ -19,6 +19,11 @@ public class WaterRise : MonoBehaviour
 
     void Update()
     {
+        if (GameProperties.isPaused || GameProperties.isEnded)
+        {
+            return;
+        }
+
         float waterX = player.transform.position.x;
         float waterY = transform.position.y;
         float diff = player.transform.position.y - waterY;

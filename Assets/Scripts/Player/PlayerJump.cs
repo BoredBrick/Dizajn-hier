@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
+    private GameObject footstepsSFX;
     private Rigidbody2D rb;
     private float jumpForce;
     private float gravityForce;
@@ -10,6 +11,7 @@ public class PlayerJump : MonoBehaviour
 
     void Start()
     {
+        footstepsSFX = GameObject.Find("FootstepsSFX");
         rb = GetComponent<Rigidbody2D>();
         jumpForce = PlayerProperties.jumpForce;
         gravityForce = PlayerProperties.gravityForce;
@@ -29,6 +31,10 @@ public class PlayerJump : MonoBehaviour
                 PlayerProperties.speedForce = 100f;
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             }
+        }
+        else
+        {
+            footstepsSFX.GetComponent<AudioSource>().Stop();
         }
     }
 

@@ -58,14 +58,14 @@ public class StringsCollision : MonoBehaviour
                 mainCamera.GetComponent<Animator>().keepAnimatorStateOnDisable = true;
                 mainCamera.GetComponent<Animator>().enabled = true;
 
-                if (PlayerProperties.playerLifes > 0)
+                if (PlayerProperties.lives > 0)
                 {
-                    PlayerProperties.playerLifes--;
+                    PlayerProperties.lives--;
                     player.transform.position = new(0f, 10f, 0f);
                 }
                 else
                 {
-                    GameProperties.isEnd = true;
+                    GameProperties.isEnded = true;
                 }
 
                 player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;

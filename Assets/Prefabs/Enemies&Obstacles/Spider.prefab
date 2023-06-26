@@ -142,7 +142,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 02bad5227f7185043b57f29784d41e5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,11 +254,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 130375209
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.42352945, g: 0.13725491, b: 0.7058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1067,14 +1067,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7140622406987951526, guid: 73a7a022545af4d41b920bc16e4119c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35f4097b3465f5943bf896a65a6aa256, type: 2}
     - target: {fileID: -3756473180518285571, guid: 73a7a022545af4d41b920bc16e4119c2, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1382825102743101437, guid: 73a7a022545af4d41b920bc16e4119c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35f4097b3465f5943bf896a65a6aa256, type: 2}
     - target: {fileID: 919132149155446097, guid: 73a7a022545af4d41b920bc16e4119c2, type: 3}
       propertyPath: m_Name
       value: spider1
       objectReference: {fileID: 0}
+    - target: {fileID: 4015645552420492674, guid: 73a7a022545af4d41b920bc16e4119c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35f4097b3465f5943bf896a65a6aa256, type: 2}
+    - target: {fileID: 6209297712205379352, guid: 73a7a022545af4d41b920bc16e4119c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 35f4097b3465f5943bf896a65a6aa256, type: 2}
+    - target: {fileID: 7926839288223873370, guid: 73a7a022545af4d41b920bc16e4119c2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8cbf5b723885ab4468e5253b9af6255c, type: 2}
     - target: {fileID: 8879528566716807029, guid: 73a7a022545af4d41b920bc16e4119c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000038567433

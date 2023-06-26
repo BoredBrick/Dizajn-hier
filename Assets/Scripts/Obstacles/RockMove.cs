@@ -6,6 +6,7 @@ public class RockMove : MonoBehaviour
 {    
     private GameObject player;
     private GameObject rockRenderer;
+    private GameObject spriteRenderer;
     private GameObject mainCamera;
     private Rigidbody2D rb;
     private float fallForce = 50f;
@@ -18,11 +19,13 @@ public class RockMove : MonoBehaviour
     private bool rockFell = false;
     private Color originalColor;
     private Color previousColor;
+    private Color newColor;
 
     void Start()
     {
         player = GameObject.Find("Player");
         rockRenderer = GameObject.Find("RockRenderer");
+        spriteRenderer = GameObject.Find("SpriteRenderer");
         mainCamera = GameObject.Find("MainCamera");
         defaultRockPosition = this.gameObject.transform.position;
         rockPositionX = this.gameObject.transform.position.x;
@@ -41,8 +44,10 @@ public class RockMove : MonoBehaviour
             rockFell = true;
             fallForce = Random.Range(50f, 100f);
             rb.AddForce(Vector2.left * fallForce, ForceMode2D.Impulse);
+            newColor = Colors.GetDifferentRandomColor(previousColor);
 
-            rockRenderer.GetComponent<MeshRenderer>().material.color = Colors.GetDifferentRandomColor(previousColor);
+            rockRenderer.GetComponent<MeshRenderer>().material.color = newColor;
+            spriteRenderer.GetComponent<SpriteRenderer>().material.color = newColor;
             previousColor = rockRenderer.GetComponent<MeshRenderer>().material.color;
         }
 
@@ -64,6 +69,7 @@ public class RockMove : MonoBehaviour
         if (wasReset)
         {
             rockRenderer.GetComponent<MeshRenderer>().material.color = originalColor;
+            spriteRenderer.GetComponent<SpriteRenderer>().material.color = originalColor;
 
             wasReset = false;
         }
@@ -87,6 +93,7 @@ public class RockMove : MonoBehaviour
 
                 this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
                 rockRenderer.GetComponent<MeshRenderer>().enabled = false;
+                spriteRenderer.GetComponent<SpriteRenderer>().enabled = false;
             }
             else
             {

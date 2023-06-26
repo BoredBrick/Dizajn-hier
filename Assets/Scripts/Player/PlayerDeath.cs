@@ -16,6 +16,7 @@ public class PlayerDeath : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private GameObject controller;
     private XMLHighscoreManager HighscoreManager;
+    private bool respawned = false;
 
     private void Start()
     {
@@ -28,15 +29,17 @@ public class PlayerDeath : MonoBehaviour
             return;
         }
 
-        if (!HitTaken())
+        if (!HitTaken(null))
         {
             return;
         }
 
-        if (PlayerProperties.lives > 0)
+        if (PlayerProperties.lives > 1)
         {
             PlayerProperties.lives--;
             transform.position = respawnPosition;
+            WaterRise.WaterPos = new Vector2(transform.position.x, WaterRise.WaterPos.y - 300);
+            respawned = false;
         }
         else
         {
@@ -51,15 +54,22 @@ public class PlayerDeath : MonoBehaviour
         }
     }
 
-    private bool HitTaken()
+    private bool HitTaken(Collider2D collision)
     {
+        /*
         if (transform.position.y < deathHeight)
         {
             return true;
         }
+        */
+        
+        if (collision != null && collision.CompareTag("Respawn") && respawned == false)
+        {
+            respawned = true;
+        }        
         else if (WaterRise.WaterPos.y > transform.position.y - 80)
         {
-            PlayerProperties.lives = 0;
+            //PlayerProperties.lives = 0;
             return true;
         }
         return false;
@@ -71,5 +81,10 @@ public class PlayerDeath : MonoBehaviour
         menuButtonImage.color = color;
         newGameButtonImage.color = color;
         gameOverText.color = color;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        HitTaken(collision);
     }
 }

@@ -36,6 +36,7 @@ public class PlayerDeath : MonoBehaviour
 
         if (PlayerProperties.lives > 1)
         {
+            Debug.Log("Respawn");
             PlayerProperties.lives--;
             transform.position = respawnPosition;
             WaterRise.WaterPos = new Vector2(transform.position.x, WaterRise.WaterPos.y - 300);
@@ -63,9 +64,9 @@ public class PlayerDeath : MonoBehaviour
         }
         */
         
-        if (collision != null && collision.CompareTag("Respawn") && respawned == false)
+        if (collision != null)
         {
-            respawned = true;
+            return true;
         }        
         else if (WaterRise.WaterPos.y > transform.position.y - 80)
         {
@@ -85,6 +86,10 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HitTaken(collision);
+        if (collision.CompareTag("Respawn") && respawned == false)
+        {
+            respawned = true;
+            HitTaken(collision);
+        }
     }
 }

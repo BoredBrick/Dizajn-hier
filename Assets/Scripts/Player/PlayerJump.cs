@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
+    public AudioSource jumpSFX;
     private GameObject footstepsSFX;
     private Rigidbody2D rb;
     private float jumpForce;
@@ -26,6 +27,11 @@ public class PlayerJump : MonoBehaviour
 
             if ((Input.GetAxis("RTJump") > 0 || Input.GetKey(KeyCode.Space)) && IsGrounded())
             {
+                if (!jumpSFX.isPlaying)
+                { 
+                    jumpSFX.Play();
+                }
+                
                 PlayerProperties.isStickActive = false;
 
                 PlayerProperties.speedForce = 100f;

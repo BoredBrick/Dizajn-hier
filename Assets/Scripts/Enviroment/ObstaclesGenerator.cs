@@ -9,24 +9,24 @@ public class ObstaclesGenerator : MonoBehaviour
     [SerializeField] Transform position2;
     void Start()
     {        
-        if (PlayerProperties.score > 200)
+        if (PlayerProperties.score > 50)
         {
             switch (Random.Range(1, 10))
             {
                 case 8:
-                    if (position1 == null)
+                    if (position1 != null)
                         Generate(position1);
                     break;
 
                 case 9:
-                    if (position2 == null)
+                    if (position2 != null)
                         Generate(position2);
                     break;
 
                 case 10:
-                    if (position1 == null)
+                    if (position1 != null)
                         Generate(position1);
-                    if (position2 == null)
+                    if (position2 != null)
                         Generate(position2);
                     break;
 

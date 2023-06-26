@@ -8,9 +8,9 @@ public class SpikeMove : MonoBehaviour
     private GameObject mainCamera;
     public bool isAboveGround;
     public bool isBelowGround;
-    private float movementSpeed = 22f;   
+    private float movementSpeed = 20f;   
     private float distanceThreshold = 70f;
-    private float travelDistance = 15f;
+    private float travelDistance = 10f;
     private float defaultPosition;   
     private bool wasColorChanged = false;
     private Color newColor;
@@ -32,7 +32,7 @@ public class SpikeMove : MonoBehaviour
         {
             if (isBelowGround && !isAboveGround)
             {
-                if (this.gameObject.transform.localPosition.y <= (defaultPosition + travelDistance))
+                if (this.gameObject.transform.localPosition.y <= (defaultPosition + travelDistance*2))
                 {
                     transform.Translate(Vector2.up * Time.deltaTime * movementSpeed, Space.World);
                 }
@@ -40,19 +40,19 @@ public class SpikeMove : MonoBehaviour
 
             if (!isBelowGround && isAboveGround)
             {
-                if (this.gameObject.transform.localPosition.y >= (defaultPosition - travelDistance))
+                if (this.gameObject.transform.localPosition.y >= (defaultPosition - travelDistance/4))
                 {
                     transform.Translate(Vector2.down * Time.deltaTime * movementSpeed, Space.World);
                 }
             }
 
-            if (Mathf.Round(this.gameObject.transform.localPosition.y) == Mathf.Round(defaultPosition + travelDistance))
+            if (Mathf.Round(this.gameObject.transform.localPosition.y) == Mathf.Round(defaultPosition + travelDistance*2))
             {
                 isBelowGround = false;
                 isAboveGround = true;
             }
 
-            if (Mathf.Round(this.gameObject.transform.localPosition.y) == Mathf.Round(defaultPosition - travelDistance))
+            if (Mathf.Round(this.gameObject.transform.localPosition.y) == Mathf.Round(defaultPosition - travelDistance/4))
             {
                 isBelowGround = true;
                 isAboveGround = false;
@@ -123,7 +123,7 @@ public class SpikeMove : MonoBehaviour
                 if (PlayerProperties.lives > 0)
                 {
                     PlayerProperties.lives--;
-                    player.transform.position = new(0f, 10f, 0f);
+                    //player.transform.position = new(0f, 10f, 0f);
                 }
                 else
                 {

@@ -30,7 +30,7 @@ public class RockMove : MonoBehaviour
         defaultRockPosition = this.gameObject.transform.position;
         rockPositionX = this.gameObject.transform.position.x;
         rb = GetComponent<Rigidbody2D>();
-        distanceThreshold = Random.Range(100f, 150f);
+        distanceThreshold = Random.Range(130f, 150f);
         originalColor = rockRenderer.GetComponent<MeshRenderer>().material.color;
         previousColor = Color.white;
     }
@@ -42,8 +42,9 @@ public class RockMove : MonoBehaviour
         if (Mathf.Abs(distance) <= distanceThreshold && rockPositionX >= player.transform.position.x && !rockFell)
         {
             rockFell = true;
-            fallForce = Random.Range(50f, 100f);
-            rb.AddForce(Vector2.left * fallForce, ForceMode2D.Impulse);
+            fallForce = Random.Range(200f, 250f);
+            Quaternion rotation = Quaternion.Euler(0, 0, 45);
+            rb.AddForce(rotation * Vector2.left * fallForce, ForceMode2D.Impulse);
             newColor = Colors.GetDifferentRandomColor(previousColor);
 
             rockRenderer.GetComponent<MeshRenderer>().material.color = newColor;
@@ -103,7 +104,7 @@ public class RockMove : MonoBehaviour
                 if (PlayerProperties.lives > 0)
                 {
                     PlayerProperties.lives--;
-                    player.transform.position = new(0f, 10f, 0f);
+                    //player.transform.position = new(0f, 10f, 0f);
                 }
                 else
                 {

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerDeath : MonoBehaviour
 {
     private readonly int deathHeight = -100;
-    private readonly Vector3 respawnPosition = new(0f, 10f, 0f);
+    //private Vector3 respawnPosition =     
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject newGameButton;
     [SerializeField] private GameObject deathScreen;
@@ -20,6 +20,7 @@ public class PlayerDeath : MonoBehaviour
 
     private void Start()
     {
+        PlayerProperties.Checkpoint = new(0, 15, 0);
         HighscoreManager = controller.GetComponent<XMLHighscoreManager>();
     }
     private void Update()
@@ -38,7 +39,7 @@ public class PlayerDeath : MonoBehaviour
         {
             Debug.Log("Respawn");
             PlayerProperties.lives--;
-            transform.position = respawnPosition;
+            transform.position = PlayerProperties.Checkpoint;
             WaterRise.WaterPos.Set(transform.position.x, WaterRise.WaterPos.y - 300, WaterRise.WaterPos.z);
             respawned = false;
         }

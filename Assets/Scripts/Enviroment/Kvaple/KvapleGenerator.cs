@@ -44,7 +44,7 @@ public class KvapleGenerator : MonoBehaviour
     void GenerateOnGround(Transform pos)
     {
         Vector3 bott = new(
-            pos.position.x + Random.Range((-pos.localScale.x / 2.3f) + 40, (pos.localScale.x / 2.3f) - 40),
+            pos.position.x + Random.Range((-pos.localScale.x + 20) / 2 , pos.localScale.x - 20 / 2 ),
             pos.position.y + 70,
             5);
         Instantiate(kvapel_Bott, bott, Quaternion.identity, this.gameObject.transform);

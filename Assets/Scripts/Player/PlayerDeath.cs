@@ -39,7 +39,7 @@ public class PlayerDeath : MonoBehaviour
             Debug.Log("Respawn");
             PlayerProperties.lives--;
             transform.position = respawnPosition;
-            WaterRise.WaterPos = new Vector2(transform.position.x, WaterRise.WaterPos.y - 300);
+            WaterRise.WaterPos.Set(transform.position.x, WaterRise.WaterPos.y - 300, WaterRise.WaterPos.z);
             respawned = false;
         }
         else
@@ -57,14 +57,12 @@ public class PlayerDeath : MonoBehaviour
 
     private bool HitTaken(Collider2D collision)
     {
-        /*
+        
         if (transform.position.y < deathHeight)
         {
             return true;
-        }
-        */
-        
-        if (collision != null)
+        }        
+        else if (collision != null)
         {
             return true;
         }        

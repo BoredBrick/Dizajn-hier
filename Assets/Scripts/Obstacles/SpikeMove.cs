@@ -8,9 +8,9 @@ public class SpikeMove : MonoBehaviour
     private GameObject mainCamera;
     public bool isAboveGround;
     public bool isBelowGround;
-    private float movementSpeed = 20f;   
+    private float movementSpeed = 22f;   
     private float distanceThreshold = 70f;
-    private float travelDistance = 10f;
+    private float travelDistance = 15f;
     private float defaultPosition;   
     private bool wasColorChanged = false;
     private Color newColor;
@@ -20,7 +20,7 @@ public class SpikeMove : MonoBehaviour
     {
         player = GameObject.Find("Player");
         mainCamera = GameObject.Find("MainCamera");
-        defaultPosition = this.gameObject.transform.position.y;
+        defaultPosition = transform.localPosition.y;
         colorChangeTime = Random.Range(2, 6);
     }
 

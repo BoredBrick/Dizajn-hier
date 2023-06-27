@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
+    public AudioSource jumpSFX;
     private GameObject footstepsSFX;
     private Rigidbody2D rb;
     private float jumpForce;
@@ -30,6 +31,11 @@ public class PlayerJump : MonoBehaviour
 
                 //PlayerProperties.speedForce = 100f;
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+                if (!jumpSFX.isPlaying)
+                {
+                    jumpSFX.Play();
+                }
             }
         }
         else

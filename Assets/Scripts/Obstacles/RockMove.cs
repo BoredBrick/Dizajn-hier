@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RockMove : MonoBehaviour
-{    
+{
+    public AudioSource rockSFX;
     private GameObject player;
     private SpriteRenderer spriteRenderer;
     private GameObject mainCamera;
@@ -12,7 +11,7 @@ public class RockMove : MonoBehaviour
     private float remainingForceTime = 0.7f;
     private float rockPositionX;
     private Vector3 defaultRockPosition;
-    private float distanceThreshold;   
+    private float distanceThreshold;
     private bool wasCorrectColor = false;
     private bool wasReset = false;
     private bool rockFell = false;
@@ -40,6 +39,11 @@ public class RockMove : MonoBehaviour
 
         if (Mathf.Abs(distance) <= distanceThreshold && rockPositionX >= player.transform.position.x && !rockFell)
         {
+            if (!rockSFX.isPlaying)
+            {
+                rockSFX.Play();
+            }
+
             rockFell = true;
             fallForce = Random.Range(200f, 250f);
             Quaternion rotation = Quaternion.Euler(0, 0, 45);
@@ -90,6 +94,7 @@ public class RockMove : MonoBehaviour
                 wasCorrectColor = true;
 
                 this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+                rockSFX.Stop();
                 spriteRenderer.enabled = false;
             }
             else
@@ -110,9 +115,10 @@ public class RockMove : MonoBehaviour
                 wasReset = true;
                 rockFell = false;
                 player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-                this.gameObject.transform.position = defaultRockPosition; 
+                this.gameObject.transform.position = defaultRockPosition;
                 rb.velocity = Vector3.zero;
-            }       
+                rockSFX.Stop();
+            }
         }
     }
 }

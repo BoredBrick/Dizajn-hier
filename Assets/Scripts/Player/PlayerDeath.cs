@@ -2,9 +2,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
 public class PlayerDeath : MonoBehaviour
 {
+    public AudioSource respawnSFX;
+    public AudioSource deathSFX;
     private readonly int deathHeight = -100;
     //private Vector3 respawnPosition =     
     [SerializeField] private GameObject menuButton;
@@ -37,7 +38,11 @@ public class PlayerDeath : MonoBehaviour
 
         if (PlayerProperties.lives > 1)
         {
-            Debug.Log("Respawn");
+            if (!respawnSFX.isPlaying)
+            {
+                respawnSFX.Play();
+            }
+
             PlayerProperties.lives--;
             transform.position = PlayerProperties.Checkpoint;
             WaterRise.WaterPos.Set(transform.position.x, WaterRise.WaterPos.y - 300, WaterRise.WaterPos.z);
@@ -45,6 +50,11 @@ public class PlayerDeath : MonoBehaviour
         }
         else
         {
+            if (!deathSFX.isPlaying)
+            {
+                deathSFX.Play();
+            }
+
             Time.timeScale = 0;
             deathScreen.SetActive(true);
             HighscoreManager.AddScore(PlayerProperties.score);
@@ -58,15 +68,15 @@ public class PlayerDeath : MonoBehaviour
 
     private bool HitTaken(Collider2D collision)
     {
-        
+
         if (transform.position.y < deathHeight)
         {
             return true;
-        }        
+        }
         else if (collision != null)
         {
             return true;
-        }        
+        }
         else if (WaterRise.WaterPos.y > transform.position.y - 80)
         {
             //PlayerProperties.lives = 0;

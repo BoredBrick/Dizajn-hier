@@ -28,19 +28,16 @@ public class PlayerCollector : MonoBehaviour
                     break;
 
                 case CollectableType.speedBoost:
-                    Debug.Log(CollectableType.speedBoost);
                     StartCoroutine(SetPowerUpHUD("Speed Boost", null));
                     StartCoroutine(ModifySpeed(10, 180));
                     break;
 
                 case CollectableType.speedSlow:
-                    Debug.Log(CollectableType.speedSlow);
                     StartCoroutine(SetPowerUpHUD("Speed Slow", null));
                     StartCoroutine(ModifySpeed(5, 80));                    
                     break;
 
                 case CollectableType.longStick:
-                    Debug.Log(CollectableType.longStick);
                     StartCoroutine(SetPowerUpHUD("Infinite Stick", null));
                     StartCoroutine(ModifyStick(20,200));
                     break;
@@ -77,7 +74,6 @@ public class PlayerCollector : MonoBehaviour
         powerUpHUD.GetComponent<Text>().text = text;
         yield return new WaitForSeconds(2);
         //powerUpHUD.transform.Find("PowerUpImg").GetComponent<SpriteRenderer>().sprite = sprite;
-
         powerUpHUD.SetActive(false);
     }
 }

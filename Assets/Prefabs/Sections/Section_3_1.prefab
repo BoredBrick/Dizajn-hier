@@ -73,7 +73,7 @@ MonoBehaviour:
   pos_Gr2: {fileID: 6461797522063756390}
   pos_Ceil1: {fileID: 3038459506142643416}
   pos_Ceil2: {fileID: 0}
-  leftToRight: 140
+  leftToRight: 30
 --- !u!1 &7995589380105016677
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +98,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7995589380105016677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 70, z: 0}
+  m_LocalPosition: {x: 0, y: 85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

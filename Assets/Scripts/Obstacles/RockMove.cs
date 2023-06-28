@@ -5,8 +5,7 @@ using UnityEngine;
 public class RockMove : MonoBehaviour
 {    
     private GameObject player;
-    private GameObject rockRenderer;
-    private GameObject spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     private GameObject mainCamera;
     private Rigidbody2D rb;
     private float fallForce = 50f;
@@ -23,15 +22,15 @@ public class RockMove : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
-        rockRenderer = GameObject.Find("RockRenderer");
-        spriteRenderer = GameObject.Find("SpriteRenderer");
-        mainCamera = GameObject.Find("MainCamera");
+        mainCamera = player.transform.Find("MainCamera").gameObject;
+
         defaultRockPosition = this.gameObject.transform.position;
         rockPositionX = this.gameObject.transform.position.x;
         rb = GetComponent<Rigidbody2D>();
         distanceThreshold = Random.Range(130f, 150f);
-        originalColor = rockRenderer.GetComponent<MeshRenderer>().material.color;
+        originalColor = spriteRenderer.color;
         previousColor = Color.white;
     }
 
@@ -47,9 +46,8 @@ public class RockMove : MonoBehaviour
             rb.AddForce(rotation * Vector2.left * fallForce, ForceMode2D.Impulse);
             newColor = Colors.GetDifferentRandomColor(previousColor);
 
-            rockRenderer.GetComponent<MeshRenderer>().material.color = newColor;
-            spriteRenderer.GetComponent<SpriteRenderer>().material.color = newColor;
-            previousColor = rockRenderer.GetComponent<MeshRenderer>().material.color;
+            spriteRenderer.color = newColor;
+            previousColor = spriteRenderer.color;
         }
 
         if (wasCorrectColor)
@@ -69,8 +67,7 @@ public class RockMove : MonoBehaviour
 
         if (wasReset)
         {
-            rockRenderer.GetComponent<MeshRenderer>().material.color = originalColor;
-            spriteRenderer.GetComponent<SpriteRenderer>().material.color = originalColor;
+            spriteRenderer.color = originalColor;
 
             wasReset = false;
         }
@@ -88,13 +85,12 @@ public class RockMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (PlayerProperties.playerColor == rockRenderer.GetComponent<MeshRenderer>().material.color)
+            if (PlayerProperties.playerColor == spriteRenderer.color)
             {
                 wasCorrectColor = true;
 
                 this.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
-                rockRenderer.GetComponent<MeshRenderer>().enabled = false;
-                spriteRenderer.GetComponent<SpriteRenderer>().enabled = false;
+                spriteRenderer.enabled = false;
             }
             else
             {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpikeMove : MonoBehaviour
@@ -9,10 +7,10 @@ public class SpikeMove : MonoBehaviour
     private GameObject mainCamera;
     public bool isAboveGround;
     public bool isBelowGround;
-    private float movementSpeed = 20f;   
+    private float movementSpeed = 20f;
     private float distanceThreshold = 70f;
     private float travelDistance = 10f;
-    private float defaultPosition;   
+    private float defaultPosition;
     private bool wasColorChanged = false;
     private Color newColor;
     private float colorChangeTime;
@@ -27,13 +25,18 @@ public class SpikeMove : MonoBehaviour
 
     void Update()
     {
+        if (GameProperties.isPaused)
+        {
+            spikeSFX.Stop();
+            return;
+        }
         float distance = player.transform.position.x - this.gameObject.transform.position.x;
 
         if (Mathf.Abs(distance) <= distanceThreshold)
         {
             if (isBelowGround && !isAboveGround)
             {
-                if (this.gameObject.transform.localPosition.y <= (defaultPosition + travelDistance*2))
+                if (this.gameObject.transform.localPosition.y <= (defaultPosition + travelDistance * 2))
                 {
                     transform.Translate(Vector2.up * Time.deltaTime * movementSpeed, Space.World);
 
@@ -46,7 +49,7 @@ public class SpikeMove : MonoBehaviour
 
             if (!isBelowGround && isAboveGround)
             {
-                if (this.gameObject.transform.localPosition.y >= (defaultPosition - travelDistance/4))
+                if (this.gameObject.transform.localPosition.y >= (defaultPosition - travelDistance / 4))
                 {
                     transform.Translate(Vector2.down * Time.deltaTime * movementSpeed, Space.World);
 
@@ -54,13 +57,13 @@ public class SpikeMove : MonoBehaviour
                 }
             }
 
-            if (Mathf.Round(this.gameObject.transform.localPosition.y) == Mathf.Round(defaultPosition + travelDistance*2))
+            if (Mathf.Round(this.gameObject.transform.localPosition.y) == Mathf.Round(defaultPosition + travelDistance * 2))
             {
                 isBelowGround = false;
                 isAboveGround = true;
             }
 
-            if (Mathf.Round(this.gameObject.transform.localPosition.y) == Mathf.Round(defaultPosition - travelDistance/4))
+            if (Mathf.Round(this.gameObject.transform.localPosition.y) == Mathf.Round(defaultPosition - travelDistance / 4))
             {
                 isBelowGround = true;
                 isAboveGround = false;
@@ -140,7 +143,7 @@ public class SpikeMove : MonoBehaviour
                 {
                     GameProperties.isEnded = true;
                 }
-            }           
+            }
         }
     }
 }

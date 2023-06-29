@@ -20,8 +20,12 @@ public class PlayerStick : MonoBehaviour
 
     void Update()
     {
+        if (GameProperties.isPaused)
+        {
+            return;
+        }
         if (Input.GetAxis("LTStick") > 0 && PlayerProperties.isStickActive)
-        { 
+        {
             //model.GetComponent<Animator>().Play("Hanging Idle");
 
             if (PlayerProperties.remainingStickTime >= 0)
@@ -42,7 +46,7 @@ public class PlayerStick : MonoBehaviour
                 rb.velocity = Vector3.zero;
                 float moveVertical = Input.GetAxis("Vertical");
                 Vector2 movement = new(0f, moveVertical);
-                transform.Translate(speedForce * Time.deltaTime * movement, Space.World);               
+                transform.Translate(speedForce * Time.deltaTime * movement, Space.World);
             }
         }
         else
@@ -53,7 +57,7 @@ public class PlayerStick : MonoBehaviour
             }
 
             stickSFX.Stop();
-        }      
+        }
 
         if (Input.GetAxis("LTStick") == 0 && PlayerProperties.isStickActive)
         {
@@ -77,7 +81,7 @@ public class PlayerStick : MonoBehaviour
         {
             PlayerProperties.remainingStickTime++;
             PlayerProperties.timeUntilStickRegen = timeUntilStickRegen;
-        }        
+        }
     }
 
 }

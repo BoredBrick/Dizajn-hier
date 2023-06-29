@@ -23,6 +23,10 @@ public class PlayerJump : MonoBehaviour
 
     void Update()
     {
+        if (GameProperties.isPaused)
+        {
+            return;
+        }
         if (Mathf.Abs(rb.velocity.y) < 0.001f)
         {
             if (!PlayerCollector.isSpeedModified)
@@ -42,13 +46,13 @@ public class PlayerJump : MonoBehaviour
                 }
 
                 model.GetComponent<Animator>().Play("Jump");
-            } 
+            }
             else
             {
                 if (Input.GetAxis("Horizontal") != 0 || !IsGrounded())
                 {
                     model.GetComponent<Animator>().Play("Standard Run");
-                } 
+                }
                 else
                 {
                     model.GetComponent<Animator>().Play("Idle");

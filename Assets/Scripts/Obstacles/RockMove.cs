@@ -87,6 +87,11 @@ public class RockMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (GameProperties.isPaused)
+        {
+            rockSFX.Stop();
+            return;
+        }
         if (collision.gameObject.CompareTag("Player"))
         {
             if (PlayerProperties.playerColor == spriteRenderer.color)

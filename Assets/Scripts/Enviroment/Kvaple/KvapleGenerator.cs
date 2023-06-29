@@ -33,7 +33,7 @@ public class KvapleGenerator : MonoBehaviour
             GenerateOnGround(pos_Gr2);
         else if (pos_Gr2 == null && pos_Gr1 != null)
             GenerateOnGround(pos_Gr1);
-        else
+        else if (pos_Gr1 != null && pos_Gr2 != null)
             switch (Random.Range(0, 2))
             {
                 case 1: GenerateOnGround(pos_Gr1); break;

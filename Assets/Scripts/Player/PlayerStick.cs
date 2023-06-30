@@ -26,8 +26,6 @@ public class PlayerStick : MonoBehaviour
         }
         if (Input.GetAxis("LTStick") > 0 && PlayerProperties.isStickActive)
         {
-            //model.GetComponent<Animator>().Play("Hanging Idle");
-
             if (PlayerProperties.remainingStickTime >= 0)
             {
                 if (!wasPlayedOnce)
@@ -83,5 +81,4 @@ public class PlayerStick : MonoBehaviour
             PlayerProperties.timeUntilStickRegen = timeUntilStickRegen;
         }
     }
-
 }

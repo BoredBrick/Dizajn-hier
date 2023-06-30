@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
@@ -8,7 +5,9 @@ public class EnemyMove : MonoBehaviour
     public static bool isInDefaultPosition = true;
     public static bool isPlayerClose = false;
     public AudioSource spiderSFX;
+    public AudioSource respawnSFX;
     private GameObject player;
+    private GameObject spiderModel;
     private GameObject mainCamera;
     private float distanceThreshold = 110f;
     private float travelDistance = 70f;
@@ -19,6 +18,7 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        spiderModel = GameObject.Find("SpiderModel");
         mainCamera = GameObject.Find("MainCamera");
         defaultPosition = this.gameObject.transform.localPosition.x;
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +30,8 @@ public class EnemyMove : MonoBehaviour
 
         if (Mathf.Abs(distance) >= distanceThreshold)
         {
+            spiderModel.GetComponent<Animator>().Play("SpiderWalk");
+
             spiderSFX.Stop();
 
             isPlayerClose = false;
@@ -51,14 +53,16 @@ public class EnemyMove : MonoBehaviour
 
             if (this.gameObject.transform.localPosition.x >= (defaultPosition + travelDistance))
             {
-                transform.eulerAngles = new Vector3(0, 0, 0); 
+                transform.eulerAngles = new Vector3(0, 0, 0);
             }
         }
         else
         {
+            spiderModel.GetComponent<Animator>().Play("SpiderIdle");
+
             if (!spiderSFX.isPlaying)
             {
-                spiderSFX.Play();            
+                spiderSFX.Play();
             }
 
             isPlayerClose = true;
@@ -95,6 +99,10 @@ public class EnemyMove : MonoBehaviour
             if (PlayerProperties.lives > 0)
             {
                 PlayerProperties.lives--;
+                if (!respawnSFX.isPlaying)
+                {
+                    respawnSFX.Play();
+                }
                 //player.transform.position = new(0f, 10f, 0f);
             }
             else

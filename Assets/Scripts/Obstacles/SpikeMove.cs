@@ -3,6 +3,7 @@ using UnityEngine;
 public class SpikeMove : MonoBehaviour
 {
     public AudioSource spikeSFX;
+    public AudioSource respawnSFX;
     private GameObject player;
     private GameObject mainCamera;
     public bool isAboveGround;
@@ -136,6 +137,10 @@ public class SpikeMove : MonoBehaviour
                 if (PlayerProperties.lives > 0)
                 {
                     PlayerProperties.lives--;
+                    if (!respawnSFX.isPlaying)
+                    {
+                        respawnSFX.Play();
+                    }
                     Destroy(gameObject);
                     //player.transform.position = new(0f, 10f, 0f);
                 }

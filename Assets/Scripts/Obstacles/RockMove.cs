@@ -3,6 +3,7 @@ using UnityEngine;
 public class RockMove : MonoBehaviour
 {
     public AudioSource rockSFX;
+    public AudioSource respawnSFX;
     private GameObject player;
     private SpriteRenderer spriteRenderer;
     private GameObject mainCamera;
@@ -110,6 +111,10 @@ public class RockMove : MonoBehaviour
                 if (PlayerProperties.lives > 0)
                 {
                     PlayerProperties.lives--;
+                    if (!respawnSFX.isPlaying)
+                    {
+                        respawnSFX.Play();
+                    }
                     Destroy(gameObject);
                     //player.transform.position = new(0f, 10f, 0f);
                 }

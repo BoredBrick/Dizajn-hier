@@ -1020,6 +1020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 1954727448}
   resumeButton: {fileID: 1020408024}
+  newGameButtonImage: {fileID: 458563303}
   resumeButtonImage: {fileID: 1869689057}
   menuButtonImage: {fileID: 3404872596937647704}
   pausedText: {fileID: 331765352}

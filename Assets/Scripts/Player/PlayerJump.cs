@@ -51,12 +51,15 @@ public class PlayerJump : MonoBehaviour
             {
 
 
-                if (Input.GetAxis("Horizontal") != 0 && !PlayerProperties.isStickActive && !isSticked)
+                if ((Input.GetAxis("Horizontal") != 0 && !PlayerProperties.isStickActive) || (Input.GetAxis("Horizontal") != 0 && !isSticked))
                 {
                     model.GetComponent<Animator>().Play("Standard Run");
                 }
                 else
                 {
+                    Debug.Log("IsStickActive: " + PlayerProperties.isStickActive);
+                    Debug.Log("IsSticked: " + isSticked);
+
                     if ((Input.GetAxis("LTStick") > 0 && PlayerProperties.isStickActive && Input.GetAxis("Vertical") == 0) || (Input.GetAxis("LTStick") > 0 && isSticked && Input.GetAxis("Vertical") == 0))
                     {
                         model.GetComponent<Animator>().Play("Hanging Idle");
@@ -129,7 +132,7 @@ public class PlayerJump : MonoBehaviour
         if (collision.gameObject.CompareTag("Ceiling"))
             isGrounded = false;
 
-        if (collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Ceiling") || collision.gameObject.CompareTag("Platform"))
         {
             isSticked = false;
         }

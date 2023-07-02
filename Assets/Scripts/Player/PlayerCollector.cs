@@ -48,7 +48,7 @@ public class PlayerCollector : MonoBehaviour
                         pickUpSFX.Play();
                     }
 
-                    StartCoroutine(SetPowerUpHUD("Speed Boost", null));
+                    StartCoroutine(SetPowerUpHUD("Speed Boost", speedBoost));
                     StartCoroutine(ModifySpeed(10, 180));
                     break;
 
@@ -58,7 +58,7 @@ public class PlayerCollector : MonoBehaviour
                         pickDownSFX.Play();
                     }
 
-                    StartCoroutine(SetPowerUpHUD("Speed Slow", null));
+                    StartCoroutine(SetPowerUpHUD("Speed Slow", speedSlow));
                     StartCoroutine(ModifySpeed(5, 80));
                     break;
 
@@ -68,7 +68,7 @@ public class PlayerCollector : MonoBehaviour
                         pickUpSFX.Play();
                     }
 
-                    StartCoroutine(SetPowerUpHUD("Infinite Stick", null));
+                    StartCoroutine(SetPowerUpHUD("Infinite Stick", longStick));
                     StartCoroutine(ModifyStick(20, 200));
                     break;
 
@@ -98,10 +98,11 @@ public class PlayerCollector : MonoBehaviour
     }
     private IEnumerator SetPowerUpHUD(string text, Sprite sprite)
     {
-        powerUpHUD.SetActive(true);
         powerUpHUD.GetComponent<Text>().text = text;
+        powerUpHUD.transform.Find("PowerUpImg").GetComponent<Image>().sprite = sprite;
+
+        powerUpHUD.SetActive(true);
         yield return new WaitForSeconds(2);
-        //powerUpHUD.transform.Find("PowerUpImg").GetComponent<SpriteRenderer>().sprite = sprite;
         powerUpHUD.SetActive(false);
     }
 }

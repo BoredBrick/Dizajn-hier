@@ -1,8 +1,3 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
-using static SpawnCollectable;
-
 public class PlayerCollector : MonoBehaviour
 {
     public static bool isSpeedModified = false;
@@ -26,19 +21,12 @@ public class PlayerCollector : MonoBehaviour
             switch (other.GetComponent<SpawnCollectable>().Type)
             {
                 case CollectableType.gem:
-                    if (!gemSFX.isPlaying)
-                    {
-                        gemSFX.Play();
-                    }
-
+                    gemSFX.Play();
                     PlayerProperties.gems++;
                     break;
-                case CollectableType.life:
-                    if (!newLifeSFX.isPlaying)
-                    {
-                        newLifeSFX.Play();
-                    }
 
+                case CollectableType.life:
+                    newLifeSFX.Play();
                     PlayerProperties.lives++;
                     break;
 

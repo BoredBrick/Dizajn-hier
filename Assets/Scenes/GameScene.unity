@@ -1846,7 +1846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &699489921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3444,7 +3444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3404872596767603746, guid: 0b84ca9eb59113f4997f9a5c47a7f04a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -91.9
+      value: -118
       objectReference: {fileID: 0}
     - target: {fileID: 3404872596767603746, guid: 0b84ca9eb59113f4997f9a5c47a7f04a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3480,7 +3480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3404872596767603749, guid: 0b84ca9eb59113f4997f9a5c47a7f04a, type: 3}
       propertyPath: m_Colors.m_NormalColor.a
-      value: 0.6666667
+      value: 0.21568628
       objectReference: {fileID: 0}
     - target: {fileID: 3404872596767603749, guid: 0b84ca9eb59113f4997f9a5c47a7f04a, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -4479,7 +4479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.5584717, y: 142.28}
+  m_AnchoredPosition: {x: 2.5584717, y: 100}
   m_SizeDelta: {x: -324.26, y: -648.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2124541018
@@ -4597,7 +4597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -245.4}
+  m_AnchoredPosition: {x: 0, y: -307}
   m_SizeDelta: {x: 981, y: 257}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3404872596136114305
@@ -4679,7 +4679,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.6666667}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.21568628}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.16078432}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}

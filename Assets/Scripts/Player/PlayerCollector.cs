@@ -28,6 +28,7 @@ public class PlayerCollector : MonoBehaviour
                 case CollectableType.gem:
                     gemSFX.Play();
                     PlayerProperties.gems++;
+                    PlayerProperties.score += 50;
                     break;
 
                 case CollectableType.life:
@@ -62,7 +63,7 @@ public class PlayerCollector : MonoBehaviour
                     }
 
                     StartCoroutine(SetPowerUpHUD("Infinite Stick", longStick));
-                    StartCoroutine(ModifyStick(20, 200));
+                    StartCoroutine(ModifyStick(30, 200));
                     break;
 
                 default:

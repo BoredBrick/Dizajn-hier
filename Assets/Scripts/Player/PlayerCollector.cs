@@ -28,7 +28,6 @@ public class PlayerCollector : MonoBehaviour
                 case CollectableType.gem:
                     gemSFX.Play();
                     PlayerProperties.gems++;
-                    PlayerProperties.score += 50;
                     break;
 
                 case CollectableType.life:
